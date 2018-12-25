@@ -1,1 +1,1 @@
-# iOS_Trainning
+# iOS_Training

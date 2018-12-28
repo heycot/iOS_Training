@@ -10,14 +10,21 @@ import Foundation
 
 class UserBO{
     var users = [User]()
-    init() {}
+    init() {
+        let charlie = User(name: "Charlie Puth",
+                           born: "December 2, 1991",
+                           gender: "Male",
+                           avatar: "Charlie_Puth",
+                           description: "Charles Otto Puth Jr is an American singer, songwriter and record producer. His initial exposure came through the viral success of his song videos uploaded to YouTube.")
+        users.append(charlie)
+    }
     
     func getListUser() -> [User]{
         return users
     }
     
     func addOneUser(user:User) -> Bool{
-        if (user != nil) {
+        if (user.name != "") {
             users.append(user)
             return true
         } else {
@@ -35,12 +42,6 @@ class UserBO{
     }
     
     func getUserDefault() -> User {
-        let charlie = User(name: "Charlie Puth",
-                           born: "December 2, 1991",
-                           gender: "Male",
-                           avatar: "Charlie_Puth",
-                           description: "Charles Otto Puth Jr is an American singer, songwriter and record producer. His initial exposure came through the viral success of his song videos uploaded to YouTube.")
-        users.append(charlie)
-        return charlie
+        return users[0]
     }
 }

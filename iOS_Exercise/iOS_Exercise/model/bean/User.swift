@@ -9,7 +9,6 @@
 import Foundation
 
 class User {
-    
     var name:String
     var born:String
     var gender:String

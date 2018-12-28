@@ -28,17 +28,6 @@ class ViewController: UIViewController {
         DescriptionView.text = ""
     }
     
-    func showDefaultAccount() {
-        var userDefault = userBo.getUserDefault()
-        var image : UIImage = UIImage(named: userDefault.avatar)!
-        avatarView? = UIImageView(image: image)
-        
-        NameView?.text = userDefault.name
-        BornView?.text = userDefault.born
-        GenderView?.text = userDefault.gender
-        DescriptionView?.text = userDefault.description
-    }
-    
     func showDetailAccount(user:User) {
         print("show user:" + user.name)
         var image : UIImage = UIImage(named: user.avatar)!
@@ -52,17 +41,17 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+//        prepareShowDetailAccount()
         
         if (user.name != "") {
+            user.avatar = noAvatar
             showDetailAccount(user: user)
         } else {
 
             user = userBo.getUserDefault()
-            print("user:" + user.name)
-//            showDefaultAccount()
             showDetailAccount(user: user)
         }
-        
+    
         
     }
     

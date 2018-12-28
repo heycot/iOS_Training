@@ -166,7 +166,7 @@
         <!--Add New Account Controller-->
         <scene sceneID="VrD-DU-rR6">
             <objects>
-                <viewController id="g5g-hA-Nv0" customClass="AddNewAccountController" sceneMemberID="viewController">
+                <viewController id="g5g-hA-Nv0" customClass="AddNewAccountController" customModule="iOS_Exercise" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="IUa-kQ-M5h">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -186,6 +186,7 @@
                                         </state>
                                         <connections>
                                             <action selector="OKAddAccount:" destination="dC8-iv-1fd" eventType="touchUpInside" id="mzB-xQ-nGa"/>
+                                            <action selector="OKButtonClick:" destination="g5g-hA-Nv0" eventType="touchUpInside" id="Ufp-X9-CJx"/>
                                             <action selector="addButton:" destination="dC8-iv-1fd" eventType="touchUpInside" id="iGc-gq-zOx"/>
                                             <segue destination="BYZ-38-t0r" kind="modal" identifier="ShowDetailUser" modalTransitionStyle="crossDissolve" id="4pv-9R-z1b"/>
                                         </connections>
@@ -271,6 +272,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="RlS-CR-bHR"/>
                     </view>
+                    <connections>
+                        <outlet property="BornAddNewAccount" destination="55q-9x-MKf" id="ADN-hV-rwW"/>
+                        <outlet property="DescriptionAddNewAccount" destination="GHq-4C-9jD" id="1z7-tS-Pmv"/>
+                        <outlet property="GenderAddNewAccount" destination="maw-57-1bW" id="bNY-zr-oub"/>
+                        <outlet property="NameAddNewAccount" destination="kVo-Sg-hjQ" id="pCK-t8-o6Q"/>
+                        <outlet property="OKBtnAddNewAccount" destination="TMv-88-jES" id="yjT-Lq-zP6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bjH-n7-dQ2" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="dC8-iv-1fd" userLabel="Exit" sceneMemberID="exit"/>

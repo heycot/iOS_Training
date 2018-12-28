@@ -152,11 +152,11 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <outlet property="BornView" destination="k00-KH-adr" id="zNw-NG-Esu"/>
-                        <outlet property="DescriptionView" destination="7IV-sW-QEm" id="x23-vK-BbQ"/>
-                        <outlet property="GenderView" destination="qOu-gj-0E3" id="zRI-0M-8qQ"/>
-                        <outlet property="NameView" destination="uo8-Xd-oRZ" id="5oF-ji-4Mo"/>
-                        <outlet property="avatarView" destination="1ry-Ub-4w4" id="rT8-1x-JJL"/>
+                        <outlet property="BornView" destination="k00-KH-adr" id="AuQ-a2-zSU"/>
+                        <outlet property="DescriptionView" destination="7IV-sW-QEm" id="a7q-Vf-9o7"/>
+                        <outlet property="GenderView" destination="qOu-gj-0E3" id="jiq-11-fqR"/>
+                        <outlet property="NameView" destination="uo8-Xd-oRZ" id="ElQ-fU-JMK"/>
+                        <outlet property="avatarView" destination="1ry-Ub-4w4" id="aiV-nT-B60"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

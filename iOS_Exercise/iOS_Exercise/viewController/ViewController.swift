@@ -12,8 +12,8 @@ import UIKit
 class ViewController: UIViewController {
     
     @IBOutlet weak var avatarView: UIImageView!
-    @IBOutlet weak var NameView: UITextField!
     @IBOutlet weak var BornView: UITextField!
+    @IBOutlet weak var NameView: UITextField!
     @IBOutlet weak var GenderView: UITextField!
     @IBOutlet weak var DescriptionView: UITextView!
     
@@ -29,7 +29,6 @@ class ViewController: UIViewController {
     }
     
     func showDetailAccount(user:User) {
-        print("show user:" + user.name)
         var image : UIImage = UIImage(named: user.avatar)!
         avatarView? = UIImageView(image: image)
         
@@ -47,14 +46,9 @@ class ViewController: UIViewController {
             user.avatar = noAvatar
             showDetailAccount(user: user)
         } else {
-
             user = userBo.getUserDefault()
             showDetailAccount(user: user)
         }
-    
-        
     }
-    
-    
 }
 

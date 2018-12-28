@@ -14,6 +14,7 @@
 		2308FB9521D1DDE400848061 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2308FB9321D1DDE400848061 /* LaunchScreen.storyboard */; };
 		2308FBA421D2199700848061 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2308FBA321D2199700848061 /* User.swift */; };
 		234A253521D35D4600481950 /* UserBO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234A253421D35D4600481950 /* UserBO.swift */; };
+		239EF33621D5FD810054E4B5 /* AddNewAccountController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239EF33521D5FD810054E4B5 /* AddNewAccountController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		2308FB9621D1DDE400848061 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2308FBA321D2199700848061 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		234A253421D35D4600481950 /* UserBO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserBO.swift; sourceTree = "<group>"; };
+		239EF33521D5FD810054E4B5 /* AddNewAccountController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewAccountController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +74,7 @@
 			children = (
 				2308FB8A21D1DDE300848061 /* AppDelegate.swift */,
 				2308FB8C21D1DDE300848061 /* ViewController.swift */,
+				239EF33521D5FD810054E4B5 /* AddNewAccountController.swift */,
 			);
 			path = viewController;
 			sourceTree = "<group>";
@@ -192,6 +195,7 @@
 				2308FB8D21D1DDE300848061 /* ViewController.swift in Sources */,
 				2308FB8B21D1DDE300848061 /* AppDelegate.swift in Sources */,
 				2308FBA421D2199700848061 /* User.swift in Sources */,
+				239EF33621D5FD810054E4B5 /* AddNewAccountController.swift in Sources */,
 				234A253521D35D4600481950 /* UserBO.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

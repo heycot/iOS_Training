@@ -12,16 +12,20 @@ class User {
     
     var name:String
     var born:String
-    var gender:Int
+    var gender:String
     var avatar:String
     var description:String
     
-    init(name:String, born:String, gender:Int, avatar:String, description:String) {
+    init(name:String, born:String, gender:String, avatar:String, description:String) {
         self.name = name
         self.born = born
         self.gender = gender
         self.avatar = avatar
         self.description = description
+    }
+    
+    convenience init() {
+        self.init(name: "", born: "", gender: "", avatar: "", description: "")
     }
     
 }

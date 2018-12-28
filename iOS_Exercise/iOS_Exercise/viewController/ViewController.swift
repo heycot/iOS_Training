@@ -7,45 +7,63 @@
 //
 
 import UIKit
+//import <UITextView+Placeholder/UITextView+Placeholder.h>
 
 class ViewController: UIViewController {
     
-    @IBOutlet weak var avatarImageView: UIImageView!
-    @IBOutlet weak var NameTextField: UITextField!
-    @IBOutlet weak var BornTextField: UITextField!
-    @IBOutlet weak var GenderTextField: UITextField!
-    @IBOutlet weak var DescriptionTextView: UITextView!
+    @IBOutlet weak var avatarView: UIImageView!
+    @IBOutlet weak var NameView: UITextField!
+    @IBOutlet weak var BornView: UITextField!
+    @IBOutlet weak var GenderView: UITextField!
+    @IBOutlet weak var DescriptionView: UITextView!
     
     var userBo = UserBO()
+    let noAvatar = "no_avatar"
+    var user = User()
     
-    func prepareShow() {
-        NameTextField.text = ""
-        BornTextField.text = ""
-        GenderTextField.text = ""
-        DescriptionTextView.text = ""
+    func prepareShowDetailAccount() {
+        NameView.text = ""
+        BornView.text = ""
+        GenderView.text = ""
+        DescriptionView.text = ""
     }
     
-    func showDefaultUser() {
+    func showDefaultAccount() {
         var userDefault = userBo.getUserDefault()
         var image : UIImage = UIImage(named: userDefault.avatar)!
-        avatarImageView = UIImageView(image: image)
+        avatarView? = UIImageView(image: image)
         
-        NameTextField.text = userDefault.name
-        BornTextField.text = userDefault.born
-        if (userDefault.gender == 1) {
-            GenderTextField.text = "Female"
-        } else {
-            GenderTextField.text = "Male"
-        }
-        DescriptionTextView.text = userDefault.description
+        NameView?.text = userDefault.name
+        BornView?.text = userDefault.born
+        GenderView?.text = userDefault.gender
+        DescriptionView?.text = userDefault.description
     }
     
+    func showDetailAccount(user:User) {
+        print("show user:" + user.name)
+        var image : UIImage = UIImage(named: user.avatar)!
+        avatarView? = UIImageView(image: image)
+        
+        NameView?.text = user.name
+        BornView?.text = user.born
+        GenderView?.text = user.gender
+        DescriptionView?.text = user.description
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        prepareShow()
-        showDefaultUser()
+        
+        if (user.name != "") {
+            showDetailAccount(user: user)
+        } else {
+
+            user = userBo.getUserDefault()
+            print("user:" + user.name)
+//            showDefaultAccount()
+            showDetailAccount(user: user)
+        }
+        
+        
     }
     
     

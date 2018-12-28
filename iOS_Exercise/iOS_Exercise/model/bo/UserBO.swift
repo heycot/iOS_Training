@@ -37,7 +37,7 @@ class UserBO{
     func getUserDefault() -> User {
         let charlie = User(name: "Charlie Puth",
                            born: "December 2, 1991",
-                           gender: 0,
+                           gender: "Male",
                            avatar: "Charlie_Puth",
                            description: "Charles Otto Puth Jr is an American singer, songwriter and record producer. His initial exposure came through the viral success of his song videos uploaded to YouTube.")
         users.append(charlie)

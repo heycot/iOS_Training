@@ -185,9 +185,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <action selector="OKAddAccount:" destination="dC8-iv-1fd" eventType="touchUpInside" id="mzB-xQ-nGa"/>
-                                            <action selector="OKButtonClick:" destination="g5g-hA-Nv0" eventType="touchUpInside" id="Ufp-X9-CJx"/>
-                                            <action selector="addButton:" destination="dC8-iv-1fd" eventType="touchUpInside" id="iGc-gq-zOx"/>
+                                            <action selector="OKButtonClick:" destination="g5g-hA-Nv0" eventType="touchUpInside" id="SRR-oF-hVO"/>
                                             <segue destination="BYZ-38-t0r" kind="modal" identifier="ShowDetailUser" modalTransitionStyle="crossDissolve" id="4pv-9R-z1b"/>
                                         </connections>
                                     </button>
@@ -215,19 +213,32 @@
                                                 <textInputTraits key="textInputTraits"/>
                                                 <connections>
                                                     <action selector="NameNewAccount" destination="dC8-iv-1fd" eventType="editingDidEnd" id="2ov-x0-bXv"/>
+                                                    <action selector="descriptionChanged:" destination="g5g-hA-Nv0" eventType="editingChanged" id="CQG-yM-w3Y"/>
                                                 </connections>
                                             </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter born" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="55q-9x-MKf" userLabel="Born Text Field">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter birthday" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="W3L-Tv-id4" userLabel="Born Text Field">
                                                 <rect key="frame" x="0.0" y="155" width="335" height="40"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="P8u-CL-Tdf"/>
+                                                </constraints>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <action selector="NameNewAccount" destination="dC8-iv-1fd" eventType="editingDidEnd" id="3A7-0q-MCn"/>
+                                                </connections>
                                             </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter gender" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="maw-57-1bW" userLabel="Gender Text Field">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter birthday" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tbG-ES-VIg" userLabel="Gender Text Field">
                                                 <rect key="frame" x="0.0" y="235" width="335" height="40"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="KAZ-l5-cEg"/>
+                                                </constraints>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <action selector="NameNewAccount" destination="dC8-iv-1fd" eventType="editingDidEnd" id="JCY-LE-9Sq"/>
+                                                </connections>
                                             </textField>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GHq-4C-9jD" userLabel="Description Text View">
                                                 <rect key="frame" x="0.0" y="315" width="335" height="222"/>
@@ -240,11 +251,11 @@
                                             <constraint firstItem="kVo-Sg-hjQ" firstAttribute="width" secondItem="bdI-ek-ko2" secondAttribute="width" id="1jF-eC-7lJ"/>
                                             <constraint firstItem="w5v-xa-cmc" firstAttribute="width" secondItem="bdI-ek-ko2" secondAttribute="width" id="3M8-Jh-nUO"/>
                                             <constraint firstItem="GHq-4C-9jD" firstAttribute="width" secondItem="bdI-ek-ko2" secondAttribute="width" id="7xI-cl-xuY"/>
-                                            <constraint firstItem="maw-57-1bW" firstAttribute="height" secondItem="kVo-Sg-hjQ" secondAttribute="height" id="Ame-tG-jvr"/>
-                                            <constraint firstItem="55q-9x-MKf" firstAttribute="width" secondItem="bdI-ek-ko2" secondAttribute="width" id="VSi-Of-fPT"/>
-                                            <constraint firstItem="maw-57-1bW" firstAttribute="width" secondItem="bdI-ek-ko2" secondAttribute="width" id="WGu-Mb-yK3"/>
+                                            <constraint firstItem="W3L-Tv-id4" firstAttribute="height" secondItem="kVo-Sg-hjQ" secondAttribute="height" id="SU1-Op-R1D"/>
+                                            <constraint firstItem="W3L-Tv-id4" firstAttribute="width" secondItem="kVo-Sg-hjQ" secondAttribute="width" id="gSa-0R-tdc"/>
+                                            <constraint firstItem="tbG-ES-VIg" firstAttribute="height" secondItem="kVo-Sg-hjQ" secondAttribute="height" id="lI5-fo-a84"/>
                                             <constraint firstItem="w5v-xa-cmc" firstAttribute="top" secondItem="bdI-ek-ko2" secondAttribute="top" id="pB8-Cd-OES"/>
-                                            <constraint firstItem="55q-9x-MKf" firstAttribute="height" secondItem="kVo-Sg-hjQ" secondAttribute="height" id="xDG-Ty-4eC"/>
+                                            <constraint firstItem="tbG-ES-VIg" firstAttribute="width" secondItem="kVo-Sg-hjQ" secondAttribute="width" id="xT7-S0-9p2"/>
                                         </constraints>
                                     </stackView>
                                 </subviews>
@@ -273,11 +284,9 @@
                         <viewLayoutGuide key="safeArea" id="RlS-CR-bHR"/>
                     </view>
                     <connections>
-                        <outlet property="BornAddNewAccount" destination="55q-9x-MKf" id="ADN-hV-rwW"/>
-                        <outlet property="DescriptionAddNewAccount" destination="GHq-4C-9jD" id="1z7-tS-Pmv"/>
-                        <outlet property="GenderAddNewAccount" destination="maw-57-1bW" id="bNY-zr-oub"/>
-                        <outlet property="NameAddNewAccount" destination="kVo-Sg-hjQ" id="pCK-t8-o6Q"/>
-                        <outlet property="OKBtnAddNewAccount" destination="TMv-88-jES" id="yjT-Lq-zP6"/>
+                        <outlet property="descriptionView" destination="GHq-4C-9jD" id="rmz-SY-HPi"/>
+                        <outlet property="gender" destination="tbG-ES-VIg" id="vyJ-cH-Wlk"/>
+                        <outlet property="okBtn" destination="TMv-88-jES" id="kNT-XP-U4v"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bjH-n7-dQ2" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -38,10 +38,17 @@ class ViewController: UIViewController {
         descriptionView?.text = user.description
     }
     
+    func disabledView() {
+        name.isEnabled = false
+        born.isEnabled = false
+        gender.isEnabled = false
+        descriptionView.isEditable = false
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         prepareShowDetailAccount()
-                
+        
         if (user.name != "") {
             user.avatar = noAvatar
             showDetailAccount(user: user)
@@ -49,6 +56,7 @@ class ViewController: UIViewController {
             user = userBo.getUserDefault()
             showDetailAccount(user: user)
         }
+        disabledView()
     }
 }
 

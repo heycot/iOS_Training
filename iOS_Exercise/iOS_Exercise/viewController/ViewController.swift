@@ -11,37 +11,37 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    @IBOutlet weak var avatarView: UIImageView!
-    @IBOutlet weak var BornView: UITextField!
-    @IBOutlet weak var NameView: UITextField!
-    @IBOutlet weak var GenderView: UITextField!
-    @IBOutlet weak var DescriptionView: UITextView!
+    @IBOutlet weak var avatar: UIImageView!
+    @IBOutlet weak var name: UITextField!
+    @IBOutlet weak var born: UITextField!
+    @IBOutlet weak var gender: UITextField!
+    @IBOutlet weak var descriptionView: UITextView!
     
     var userBo = UserBO()
     let noAvatar = "no_avatar"
     var user = User()
     
     func prepareShowDetailAccount() {
-        NameView.text = ""
-        BornView.text = ""
-        GenderView.text = ""
-        DescriptionView.text = ""
+        name.text = ""
+        born.text = ""
+        gender.text = ""
+        descriptionView.text = ""
     }
     
     func showDetailAccount(user:User) {
         var image : UIImage = UIImage(named: user.avatar)!
-        avatarView? = UIImageView(image: image)
+        avatar? = UIImageView(image: image)
         
-        NameView?.text = user.name
-        BornView?.text = user.born
-        GenderView?.text = user.gender
-        DescriptionView?.text = user.description
+        name?.text = user.name
+        born?.text = user.born
+        gender?.text = user.gender
+        descriptionView?.text = user.description
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        prepareShowDetailAccount()
-        
+        prepareShowDetailAccount()
+                
         if (user.name != "") {
             user.avatar = noAvatar
             showDetailAccount(user: user)

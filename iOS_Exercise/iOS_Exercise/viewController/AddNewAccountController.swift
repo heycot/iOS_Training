@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AddNewAccountController: UIViewController , UITextViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource{
+class AddNewAccountController: UIViewController {
     
     @IBOutlet weak var name: UITextField!
     @IBOutlet weak var born: UITextField!
@@ -29,8 +29,7 @@ class AddNewAccountController: UIViewController , UITextViewDelegate, UIPickerVi
         newUser.born  = born.text!
         newUser.gender = gender.text!
         newUser.description = descriptionView.text!
-        
-        
+                
         if ( newUser.name == "" || newUser.born == "" || newUser.gender == "" || newUser.description == "") {
             let alertController = UIAlertController(title: "Can not add!", message: "All information is required!", preferredStyle: UIAlertController.Style.alert)
             alertController.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
@@ -61,18 +60,16 @@ class AddNewAccountController: UIViewController , UITextViewDelegate, UIPickerVi
         showDatePicker()
         showGenderPicker()
         descriptionView.delegate = self
-        textFieldDidBeginEditing(textView: descriptionView)
+        textViewDidBeginEditing(descriptionView)
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard (_:)))
+        self.view.addGestureRecognizer(tapGesture)
     }
     
-//
-//    @objc func textViewdDidChange(_ textView: UITextView) {
-//        if (textView.textColor == UIColor.lightGray) {
-//            print("clear placeholder")
-//            textView.text = ""
-//            textView.textColor = UIColor.black
-//        }
-//    }
-    
+    @objc func dismissKeyboard (_ sender: UITapGestureRecognizer) {
+        name.resignFirstResponder()
+        descriptionView.resignFirstResponder()
+    }
     
     func showDatePicker() {
         //Formate Date
@@ -83,7 +80,7 @@ class AddNewAccountController: UIViewController , UITextViewDelegate, UIPickerVi
         toolbar.sizeToFit()
         let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(donedatePicker));
         let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
-        let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelDatePicker));
+        let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelPicker));
         
         toolbar.setItems([doneButton,spaceButton,cancelButton], animated: false)
         // add toolbar to textField
@@ -101,12 +98,22 @@ class AddNewAccountController: UIViewController , UITextViewDelegate, UIPickerVi
         self.view.endEditing(true)
     }
     
-    @objc func cancelDatePicker(){
+    @objc func cancelPicker(){
         self.view.endEditing(true)
     }
     
-    
     func showGenderPicker() {
+        //ToolBar
+        let toolbar = UIToolbar();
+        toolbar.sizeToFit()
+        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(doneGenderPicker));
+        let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
+        let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelPicker));
+        
+        toolbar.setItems([doneButton,spaceButton,cancelButton], animated: false)
+        // add toolbar to textField
+        gender.inputAccessoryView = toolbar
+        
         
         genderData = ["Male", "Female"]
         // Connect data:
@@ -116,6 +123,32 @@ class AddNewAccountController: UIViewController , UITextViewDelegate, UIPickerVi
         gender.inputView = genderPicker
     }
     
+    @objc func doneGenderPicker(){
+        var row = genderPicker.selectedRow(inComponent: 0)
+        gender.text = genderData[row]
+        self.view.endEditing(true)
+    }
+    
+}
+
+extension AddNewAccountController: UITextViewDelegate {
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.text.isEmpty {
+            textView.text = "Enter description"
+            textView.textColor = UIColor.lightGray
+        }
+    }
+    
+    func textViewDidChange(_ textView: UITextView) {
+        if (textView.textColor == UIColor.lightGray) {
+            textView.text = ""
+            textView.textColor = UIColor.black
+        }
+    }
+}
+
+extension AddNewAccountController: UIPickerViewDelegate, UIPickerViewDataSource {
+       
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -136,34 +169,8 @@ class AddNewAccountController: UIViewController , UITextViewDelegate, UIPickerVi
         return genderData[row]
     }
     
-    func textFieldDidBeginEditing(textView: UITextView!) {    //delegate method
-        
-        if textView.text.isEmpty {
-            print("print placeholder")
-            textView.text = "Enter description"
-            textView.textColor = UIColor.lightGray
-        }
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        gender.text = genderData[row]
     }
-    
-    
-    
-    func textFieldShouldEndEditing(textField: UITextField!) -> Bool {  //delegate method
-        return false
-    }
-    
-    func textFieldShouldReturn(textField: UITextField!) -> Bool {   //delegate method
-        textField.resignFirstResponder()
-        
-        return true
-    }
-    
-    
-    func textViewDidChange(_ textView: UITextView) {
-        if (textView.textColor == UIColor.lightGray) {
-            textView.text = ""
-            textView.textColor = UIColor.black
-        }
-    }
-    
 }
 

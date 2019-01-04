@@ -20,6 +20,21 @@ class ViewListUserController: UITableViewController{
         listUser = userBo.getListUser()
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.destination is ViewController
+        {
+            let vc = segue.destination as? ViewController
+            vc?.user = userSelected
+        }
+    }
+    
+    override func viewDidLoad() {
+         prepareData()
+        super.viewDidLoad()
+    }
+}
+
+extension ViewListUserController {
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -38,12 +53,12 @@ class ViewListUserController: UITableViewController{
         
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 117
-       
+        
         print("cell ", cell)
         let index = indexPath[1]
         cell.textLabel?.text = listUser[index].name
         cell.detailTextLabel?.text = listUser[index].born
-//        cell.imageView?.image = UIImage(named: listUser[index].avatar)
+        cell.imageView?.image = UIImage(named: listUser[index].avatar)
         
         let containerView = UIView(frame: CGRect(x:0,y:0,width:50,height:60))
         let imageView = UIImageView()
@@ -60,7 +75,7 @@ class ViewListUserController: UITableViewController{
             }
         }
         
-        cell.imageView?.addSubview(imageView)
+        //        cell.imageView?.addSubview(imageView)
         
         return cell
     }
@@ -71,20 +86,6 @@ class ViewListUserController: UITableViewController{
         userSelected = listUser[index]
         
         self.performSegue(withIdentifier: "ShowDetailUserInList", sender: self)
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.destination is ViewController
-        {
-            let vc = segue.destination as? ViewController
-            vc?.user = userSelected
-        }
-    }
-    
-    
-    override func viewDidLoad() {
-         prepareData()
-        super.viewDidLoad()
     }
 }
 

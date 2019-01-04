@@ -29,8 +29,10 @@ class ViewController: UIViewController {
     }
     
     func showDetailAccount(user:User) {
-        var image : UIImage = UIImage(named: user.avatar)!
-        avatar? = UIImageView(image: image)
+//        let image : UIImage = UIImage(named: user.avatar)!
+//        avatar? = UIImageView(image: image)
+        avatar.image = UIImage(named: user.avatar)
+        
         
         name?.text = user.name
         born?.text = user.born
@@ -50,7 +52,9 @@ class ViewController: UIViewController {
         prepareShowDetailAccount()
         
         if (user.name != "") {
-            user.avatar = noAvatar
+            if (user.avatar == "") {
+                user.avatar = noAvatar
+            }
             showDetailAccount(user: user)
         } else {
             user = userBo.getUserDefault()

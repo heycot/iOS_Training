@@ -17,6 +17,13 @@ class UserBO{
                            avatar: "Charlie_Puth",
                            description: "Charles Otto Puth Jr is an American singer, songwriter and record producer. His initial exposure came through the viral success of his song videos uploaded to YouTube.")
         users.append(charlie)
+        
+        let taylor = User(name: "Taylor Swift",
+                           born: "December 13, 1989",
+                           gender: "Female",
+                           avatar: "Taylor_Swift",
+                           description: "Taylor Alison Swift is an American singer-songwriter. As one of the world's leading contemporary recording artists, she is known for narrative songs about her personal life, which have received widespread media coverage.")
+        users.append(taylor)
     }
     
     func getListUser() -> [User]{
@@ -44,4 +51,5 @@ class UserBO{
     func getUserDefault() -> User {
         return users[0]
     }
+    
 }

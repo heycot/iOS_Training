@@ -47,6 +47,9 @@ extension ViewListUserController {
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return "User"
     }
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 80.0
+    }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "LabelCell", for: indexPath)
@@ -56,30 +59,31 @@ extension ViewListUserController {
         
         print("cell ", cell)
         let index = indexPath[1]
-        cell.textLabel?.text = listUser[index].name
-        cell.detailTextLabel?.text = listUser[index].born
-        cell.imageView?.image = UIImage(named: listUser[index].avatar)
+        //        cell.textLabel?.text = listUser[index].name
+        //        cell.detailTextLabel?.text = listUser[index].born
         
-        let containerView = UIView(frame: CGRect(x:0,y:0,width:50,height:60))
-        let imageView = UIImageView()
+        let uiView : UIView = UIView(frame: CGRect(x:0,y:0,width:375,height:60))
         
-        if let image = UIImage(named: listUser[index].avatar) {
-            let ratio = image.size.width / image.size.height
-            if containerView.frame.width > containerView.frame.height {
-                let newHeight = containerView.frame.width / ratio
-                imageView.frame.size = CGSize(width: containerView.frame.width, height: newHeight)
-            }
-            else{
-                let newWidth = containerView.frame.height * ratio
-                imageView.frame.size = CGSize(width: newWidth, height: containerView.frame.height)
-            }
-        }
+        let cellLableName : UILabel = UILabel(frame: CGRect(x:110,y:0,width:265,height:40))
+        cellLableName.text = listUser[index].name
+        cellLableName.textColor = UIColor.blue
         
-        //        cell.imageView?.addSubview(imageView)
+        let cellLableBorn : UILabel = UILabel(frame: CGRect(x:110,y:40,width:265,height:20))
+        cellLableBorn.text = listUser[index].born
+        cellLableBorn.font = cellLableBorn.font.withSize(14)
+        
+        let cellImg : UIImageView = UIImageView(frame: CGRect(x:0,y:0,width:100,height:60))
+        cellImg.image = UIImage(named: listUser[index].avatar)
+        
+        uiView.addSubview(cellLableName)
+        uiView.addSubview(cellLableBorn)
+        uiView.addSubview(cellImg)
+        
+//        cell.imageView?.addSubview(cellImg)
+        cell.addSubview(uiView)
         
         return cell
     }
-    
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let index = indexPath[1]

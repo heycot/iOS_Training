@@ -9,8 +9,9 @@
 import Foundation
 
 class UserBO{
-    var users = [User]()
+    var users : [User]
     init() {
+        users = []
        initSomeAccount()
     }
     

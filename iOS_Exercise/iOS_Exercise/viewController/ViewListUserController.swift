@@ -7,7 +7,80 @@
 //
 
 import UIKit
+import SQLite3
 
+class ViewListUserController : UIViewController {
+    
+    @IBOutlet weak var tableView: UITableView!
+    
+    var userBo = UserBO()
+    var listUser = [User]()
+    var userSelected = User()
+    
+    var db: OpaquePointer?
+    
+    func prepareData() {
+        listUser = userBo.getListUser()
+    }
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        prepareData()
+        print("list user :", listUser.count)
+        tableView.dataSource = self
+        tableView.delegate = self
+        
+        self.tableView.reloadData()
+//        tableView.register(UINib(nibName: "CustomTableViewCell", bundle: nil), forCellReuseIdentifier: "CellItem")
+    }
+    
+    @objc override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.destination is ViewController
+        {
+            let vc = segue.destination as? ViewController
+            vc?.user = sender as! User
+        }
+    }
+}
+
+extension ViewListUserController : UITableViewDataSource {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return listUser.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CellItem") as! CustomTableViewCell
+        
+        cell.avatar.image = UIImage(named: listUser[indexPath.row].avatar)
+        cell.name.text = listUser[indexPath.row].name
+        cell.born.text = listUser[indexPath.row].born
+        
+        return cell
+    }
+    
+}
+
+extension ViewListUserController : UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath)
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        performSegue(withIdentifier: "ShowUserSelected", sender: listUser[indexPath.row])
+    }
+    
+}
+
+
+
+/*
 class ViewListUserController: UITableViewController{
     
     @IBOutlet weak var tableUserView: UITableView!
@@ -92,5 +165,6 @@ extension ViewListUserController {
         self.performSegue(withIdentifier: "ShowDetailUserInList", sender: self)
     }
 }
+ */
 
 

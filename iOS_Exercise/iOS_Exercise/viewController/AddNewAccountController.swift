@@ -36,7 +36,7 @@ class AddNewAccountController: UIViewController {
             present(alertController, animated: true, completion: nil)
         } else {
             if ( userBo.addOneUser(user: newUser) == true ) {
-                
+                print("add new user success!")
                 self.performSegue(withIdentifier: "ShowDetailUser", sender: self)
             } else {
                 let alertController = UIAlertController(title: "Something went wrong!", message: "Try it later!", preferredStyle: UIAlertController.Style.alert)

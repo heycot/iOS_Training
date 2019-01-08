@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SQLite3
 
 class ViewListUserController : UIViewController {
     
@@ -17,7 +16,6 @@ class ViewListUserController : UIViewController {
     var listUser = [User]()
     var userSelected = User()
     
-    var db: OpaquePointer?
     
     func prepareData() {
         listUser = userBo.getListUser()

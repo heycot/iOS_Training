@@ -32,7 +32,7 @@ class ViewListUserController : UIViewController {
         tableView.delegate = self
         
         self.tableView.reloadData()
-//        tableView.register(UINib(nibName: "CustomTableViewCell", bundle: nil), forCellReuseIdentifier: "CellItem")
+        //        tableView.register(UINib(nibName: "CustomTableViewCell", bundle: nil), forCellReuseIdentifier: "CellItem")
     }
     
     @objc override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

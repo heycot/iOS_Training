@@ -1,0 +1,24 @@
+PODS:
+  - SQLite.swift (0.11.5):
+    - SQLite.swift/standard (= 0.11.5)
+  - SQLite.swift/standard (0.11.5)
+
+DEPENDENCIES:
+  - SQLite.swift (from `https://github.com/stephencelis/SQLite.swift.git`, branch `master`)
+
+EXTERNAL SOURCES:
+  SQLite.swift:
+    :branch: master
+    :git: https://github.com/stephencelis/SQLite.swift.git
+
+CHECKOUT OPTIONS:
+  SQLite.swift:
+    :commit: ed8f603f856e9f1f4adb76b63b7234547257ec5a
+    :git: https://github.com/stephencelis/SQLite.swift.git
+
+SPEC CHECKSUMS:
+  SQLite.swift: 7e42c4b88dc7a5d764fbd431001e6d8dc8c1cfce
+
+PODFILE CHECKSUM: 72c4ad77b1c98b76f474d1cabdb0e4b1c3e4840d
+
+COCOAPODS: 1.5.3

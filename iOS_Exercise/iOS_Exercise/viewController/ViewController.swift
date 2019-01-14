@@ -7,6 +7,7 @@
 //
 
 import UIKit
+
 //import <UITextView+Placeholder/UITextView+Placeholder.h>
 
 class ViewController: UIViewController {
@@ -18,7 +19,6 @@ class ViewController: UIViewController {
     @IBOutlet weak var descriptionView: UITextView!
     
     var userBo = UserBO()
-    let noAvatar = "no_avatar"
     var user = User()
     
     func prepareShowDetailAccount() {
@@ -36,8 +36,13 @@ class ViewController: UIViewController {
         
         name?.text = user.name
         born?.text = user.born
-        gender?.text = user.gender
         descriptionView?.text = user.description
+        
+        if (user.gender == 0) {
+            gender?.text = "Male"
+        } else {
+            gender?.text = "Female"
+        }
     }
     
     func disabledView() {
@@ -52,12 +57,9 @@ class ViewController: UIViewController {
         prepareShowDetailAccount()
         
         if (user.name != "") {
-            if (user.avatar == "") {
-                user.avatar = noAvatar
-            }
             showDetailAccount(user: user)
         } else {
-            user = userBo.getUserDefault()
+//            user = userBo.getUserDefault()
             showDetailAccount(user: user)
         }
         disabledView()

@@ -9,13 +9,15 @@
 import Foundation
 
 class User {
+    var id:Int64
     var name:String
     var born:String
-    var gender:String
+    var gender:Int64
     var avatar:String
     var description:String
     
-    init(name:String, born:String, gender:String, avatar:String, description:String) {
+    init(id:Int64, name:String, born:String, gender:Int64, avatar:String, description:String) {
+        self.id = id
         self.name = name
         self.born = born
         self.gender = gender
@@ -24,7 +26,7 @@ class User {
     }
     
     convenience init() {
-        self.init(name: "", born: "", gender: "", avatar: "", description: "")
+        self.init( id: 0, name: "", born: "", gender: 0, avatar: "", description: "")
     }
     
 }

@@ -21,20 +21,29 @@ class AddNewAccountController: UIViewController {
     
     var userBo = UserBO()
     var newUser = User()
+    let noAvatar = "no_avatar"
     var genderData: [String] = [String]()
     
     @IBAction func OKButtonClick(_ sender: UIButton) {
-        newUser.avatar = ""
-        newUser.name = name.text!
-        newUser.born  = born.text!
-        newUser.gender = gender.text!
-        newUser.description = descriptionView.text!
+        
                 
-        if ( newUser.name == "" || newUser.born == "" || newUser.gender == "" || newUser.description == "") {
+        if ( name.text! == "" || born.text! == "" || gender.text! == "" || descriptionView.text! == "") {
             let alertController = UIAlertController(title: "Can not add!", message: "All information is required!", preferredStyle: UIAlertController.Style.alert)
             alertController.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
             present(alertController, animated: true, completion: nil)
         } else {
+            
+            newUser.avatar = noAvatar
+            newUser.name = name.text!
+            newUser.born  = born.text!
+            
+            for i in 0..<genderData.count {
+                if (genderData[i] == gender.text!){
+                    newUser.gender = Int64(i)
+                }
+            }
+            newUser.description = descriptionView.text!
+            
             if ( userBo.addOneUser(user: newUser) == true ) {
                 print("add new user success!")
                 self.performSegue(withIdentifier: "ShowDetailUser", sender: self)

@@ -24,6 +24,7 @@ class ViewListUserController : UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.tableFooterView = UIView()
         
         prepareData()
         print("list user :", listUser.count)
@@ -39,6 +40,7 @@ class ViewListUserController : UIViewController {
         {
             let vc = segue.destination as? ViewController
             vc?.user = sender as! User
+            
         }
     }
 }

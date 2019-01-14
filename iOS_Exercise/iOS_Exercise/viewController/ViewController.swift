@@ -28,6 +28,7 @@ class ViewController: UIViewController {
         descriptionView.text = ""
     }
     
+    
     func showDetailAccount(user:User) {
 //        let image : UIImage = UIImage(named: user.avatar)!
 //        avatar? = UIImageView(image: image)
@@ -50,6 +51,10 @@ class ViewController: UIViewController {
         born.isEnabled = false
         gender.isEnabled = false
         descriptionView.isEditable = false
+    }
+    
+    @IBAction func cancelBtnClick(_ sender: Any) {
+        self.navigationController?.popToRootViewController(animated: true)
     }
     
     override func viewDidLoad() {

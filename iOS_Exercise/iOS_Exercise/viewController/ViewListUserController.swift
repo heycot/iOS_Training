@@ -61,6 +61,7 @@ extension ViewListUserController : UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print("numberOfRowsInSection called")
         return listUser.count
     }
     

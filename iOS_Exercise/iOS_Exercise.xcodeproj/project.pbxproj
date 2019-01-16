@@ -17,7 +17,6 @@
 		234A253521D35D4600481950 /* UserBO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234A253421D35D4600481950 /* UserBO.swift */; };
 		2356DD4D21E45684005D4624 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2356DD4C21E45684005D4624 /* Database.swift */; };
 		2363C1BF21DDB9FA0044ED91 /* LearningDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2363C1BE21DDB9FA0044ED91 /* LearningDelegate.swift */; };
-		2370730021E34F8600BC2F09 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237072FF21E34F8600BC2F09 /* CustomTableViewCell.swift */; };
 		239EF33621D5FD810054E4B5 /* AddNewAccountController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239EF33521D5FD810054E4B5 /* AddNewAccountController.swift */; };
 		23EF7B7121DF16AB00A5C7D3 /* ViewListUserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EF7B7021DF16AB00A5C7D3 /* ViewListUserController.swift */; };
 		4CF2389500F7F403CBFB3AAB /* Pods_iOS_Exercise.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F42C69EEBA3F6FC1C254D4DA /* Pods_iOS_Exercise.framework */; };
@@ -36,7 +35,6 @@
 		234A253421D35D4600481950 /* UserBO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserBO.swift; sourceTree = "<group>"; };
 		2356DD4C21E45684005D4624 /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		2363C1BE21DDB9FA0044ED91 /* LearningDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearningDelegate.swift; sourceTree = "<group>"; };
-		237072FF21E34F8600BC2F09 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		239EF33521D5FD810054E4B5 /* AddNewAccountController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewAccountController.swift; sourceTree = "<group>"; };
 		23EF7B7021DF16AB00A5C7D3 /* ViewListUserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ViewListUserController.swift; sourceTree = "<group>"; usesTabs = 0; };
 		490C3462CE08904AB552C5B0 /* Pods-iOS_Exercise.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS_Exercise.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iOS_Exercise/Pods-iOS_Exercise.debug.xcconfig"; sourceTree = "<group>"; };
@@ -95,7 +93,6 @@
 				239EF33521D5FD810054E4B5 /* AddNewAccountController.swift */,
 				2363C1BE21DDB9FA0044ED91 /* LearningDelegate.swift */,
 				23EF7B7021DF16AB00A5C7D3 /* ViewListUserController.swift */,
-				237072FF21E34F8600BC2F09 /* CustomTableViewCell.swift */,
 			);
 			path = viewController;
 			sourceTree = "<group>";
@@ -291,7 +288,6 @@
 			files = (
 				2308FB8D21D1DDE300848061 /* ViewController.swift in Sources */,
 				23EF7B7121DF16AB00A5C7D3 /* ViewListUserController.swift in Sources */,
-				2370730021E34F8600BC2F09 /* CustomTableViewCell.swift in Sources */,
 				2308FB8B21D1DDE300848061 /* AppDelegate.swift in Sources */,
 				2363C1BF21DDB9FA0044ED91 /* LearningDelegate.swift in Sources */,
 				2356DD4D21E45684005D4624 /* Database.swift in Sources */,

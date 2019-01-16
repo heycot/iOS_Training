@@ -145,7 +145,7 @@ class AddNewAccountController: UIViewController {
     }
     
     @objc func doneGenderPicker(){
-        var row = genderPicker.selectedRow(inComponent: 0)
+        let row = genderPicker.selectedRow(inComponent: 0)
         gender.text = genderData[row]
         self.view.endEditing(true)
     }

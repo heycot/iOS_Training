@@ -14,7 +14,8 @@ class AddNewAccountController: UIViewController {
     @IBOutlet weak var born: UITextField!
     @IBOutlet weak var gender: UITextField!
     @IBOutlet weak var descriptionView: UITextView!
-    @IBOutlet weak var okBtn: UIButton!
+    
+    @IBOutlet weak var okBtn: UIBarButtonItem!
     
     let datePicker = UIDatePicker()
     let genderPicker = UIPickerView()
@@ -24,9 +25,11 @@ class AddNewAccountController: UIViewController {
     let noAvatar = "no_avatar"
     var genderData: [String] = [String]()
     
-    @IBAction func OKButtonClick(_ sender: UIButton) {
-        
-                
+    @IBAction func cancelBtnClick(_ sender: Any) {
+        self.navigationController?.popToRootViewController(animated: true)
+    }
+    
+    @IBAction func okBtnClicks(_ sender: UIButton) {
         if ( name.text! == "" || born.text! == "" || gender.text! == "" || descriptionView.text! == "") {
             let alertController = UIAlertController(title: "Can not add!", message: "All information is required!", preferredStyle: UIAlertController.Style.alert)
             alertController.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
@@ -54,7 +57,6 @@ class AddNewAccountController: UIViewController {
             }
         }
     }
-    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.destination is ViewController

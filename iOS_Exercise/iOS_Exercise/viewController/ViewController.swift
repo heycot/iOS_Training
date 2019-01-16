@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Darwin
 
 //import <UITextView+Placeholder/UITextView+Placeholder.h>
 
@@ -53,8 +54,12 @@ class ViewController: UIViewController {
         descriptionView.isEditable = false
     }
     
-    @IBAction func cancelBtnClick(_ sender: Any) {
+    @IBAction func doneBtnClick(_ sender: Any) {
         self.navigationController?.popToRootViewController(animated: true)
+    }
+    
+    @IBAction func cancelBtnClick(_ sender: Any) {
+        exit(0)
     }
     
     override func viewDidLoad() {
@@ -64,7 +69,7 @@ class ViewController: UIViewController {
         if (user.name != "") {
             showDetailAccount(user: user)
         } else {
-//            user = userBo.getUserDefault()
+            user = userBo.getUserDefault()
             showDetailAccount(user: user)
         }
         disabledView()

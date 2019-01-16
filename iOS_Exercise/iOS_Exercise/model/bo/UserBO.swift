@@ -46,6 +46,10 @@ class UserBO{
        return TableUser.shared.findAll()
     }
     
+    func  getUserDefault() -> User{
+        return TableUser.shared.findFirstUser()
+    }
+    
     func addOneUser(user:User) -> Bool{
         let newUserId = TableUser.shared.insert(name: user.name, born: user.born, gender: user.gender, avatar: user.avatar, description: user.description)
         

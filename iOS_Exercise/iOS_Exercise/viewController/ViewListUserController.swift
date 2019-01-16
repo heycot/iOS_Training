@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Darwin
 
 class ViewListUserController : UIViewController {
     
@@ -21,6 +22,9 @@ class ViewListUserController : UIViewController {
         listUser = userBo.getListUser()
     }
     
+    @IBAction func cancelBtnClick(_ sender: Any) {
+        exit(0)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,8 +35,13 @@ class ViewListUserController : UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         
+//
+//        tableView.estimatedRowHeight = 80.0
+//        tableView.rowHeight = UITableView.automaticDimension
+        
+        
         self.tableView.reloadData()
-        //        tableView.register(UINib(nibName: "CustomTableViewCell", bundle: nil), forCellReuseIdentifier: "CellItem")
+        tableView.register(UINib(nibName: "CustomTableViewCell", bundle: nil), forCellReuseIdentifier: "CellItem")
     }
     
     @objc override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -57,11 +66,12 @@ extension ViewListUserController : UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CellItem") as! CustomTableViewCell
-        
+
+        print("show cell item")
         cell.avatar.image = UIImage(named: listUser[indexPath.row].avatar)
         cell.name.text = listUser[indexPath.row].name
         cell.born.text = listUser[indexPath.row].born
-        
+
         return cell
     }
     
@@ -70,7 +80,7 @@ extension ViewListUserController : UITableViewDataSource {
 extension ViewListUserController : UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let cell = tableView.cellForRow(at: indexPath)
+//        let cell = tableView.cellForRow(at: indexPath)
         tableView.deselectRow(at: indexPath, animated: true)
         
         performSegue(withIdentifier: "ShowUserSelected", sender: listUser[indexPath.row])

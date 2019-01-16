@@ -72,5 +72,19 @@ class TableUser{
         return users
     }
     
+    func findFirstUser() -> User {
+        var result = User()
+        do {
+            for user in try (Database.db.connection?.prepare(self.tableUser))! {
+                result = User(id: user[id],  name: user[name], born: user[born], gender: user[gender], avatar: user[avatar], description: user[description])
+                break
+            }
+        } catch {
+            print("Select failed")
+        }
+        
+        return result
+    }
+    
 }
 

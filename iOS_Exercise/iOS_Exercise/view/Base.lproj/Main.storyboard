@@ -13,7 +13,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="iOS_Exercise" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ViewDetailUserControllerID" id="BYZ-38-t0r" customClass="ViewController" customModule="iOS_Exercise" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
@@ -182,7 +182,7 @@
         <!--Add New Account-->
         <scene sceneID="VrD-DU-rR6">
             <objects>
-                <viewController title="Add New Account" id="g5g-hA-Nv0" customClass="AddNewAccountController" customModule="iOS_Exercise" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddNewUserControllerID" title="Add New Account" id="g5g-hA-Nv0" customClass="AddNewAccountController" customModule="iOS_Exercise" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="IUa-kQ-M5h">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -342,7 +342,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="KKY-Ku-HHc">
                             <connections>
-                                <action selector="okBtnClicks:" destination="g5g-hA-Nv0" id="pm8-2w-r8A"/>
+                                <action selector="doneBtnClick:" destination="g5g-hA-Nv0" id="WAA-wC-Zv1"/>
                                 <segue destination="Ipe-ar-kJj" kind="show" identifier="ShowDetailUser" id="kCQ-ld-BV4"/>
                             </connections>
                         </barButtonItem>
@@ -350,9 +350,9 @@
                     <connections>
                         <outlet property="born" destination="W3L-Tv-id4" id="xSD-eB-tIR"/>
                         <outlet property="descriptionView" destination="GHq-4C-9jD" id="rmz-SY-HPi"/>
+                        <outlet property="doneBtn" destination="KKY-Ku-HHc" id="Lb9-Hj-8tu"/>
                         <outlet property="gender" destination="tbG-ES-VIg" id="vyJ-cH-Wlk"/>
                         <outlet property="name" destination="kVo-Sg-hjQ" id="wTg-8q-qhu"/>
-                        <outlet property="okBtn" destination="KKY-Ku-HHc" id="My0-1w-gh1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bjH-n7-dQ2" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -363,7 +363,7 @@
         <!--User-->
         <scene sceneID="73A-OC-DF3">
             <objects>
-                <viewController title="User" id="zoZ-DQ-U54" customClass="ViewListUserController" customModule="iOS_Exercise" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ViewListUserControllerID" title="User" id="zoZ-DQ-U54" customClass="ViewListUserController" customModule="iOS_Exercise" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="GJI-0m-TQo">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -386,20 +386,19 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="1CV-7n-qlL">
-                                                            <rect key="frame" x="0.0" y="5" width="314" height="80"/>
+                                                            <rect key="frame" x="0.0" y="5" width="335" height="80"/>
                                                             <subviews>
                                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QaU-v6-qa8" userLabel="avatar">
                                                                     <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
                                                                     <constraints>
-                                                                        <constraint firstAttribute="height" constant="80" id="8wk-Pn-1Gu"/>
                                                                         <constraint firstAttribute="width" constant="80" id="FJq-uK-gCz"/>
                                                                     </constraints>
                                                                 </imageView>
                                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="LJH-4O-PiQ" userLabel="Genneral Stack View">
-                                                                    <rect key="frame" x="95" y="0.0" width="219" height="80"/>
+                                                                    <rect key="frame" x="95" y="0.0" width="240" height="80"/>
                                                                     <subviews>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" enabled="NO" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cUa-G4-Ard">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="219" height="60"/>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cUa-G4-Ard">
+                                                                            <rect key="frame" x="0.0" y="0.0" width="240" height="60"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="height" priority="999" constant="30" id="wo5-Ec-dsr"/>
                                                                             </constraints>
@@ -408,7 +407,7 @@
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="born" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JJV-Qe-Zrd">
-                                                                            <rect key="frame" x="0.0" y="60" width="219" height="20"/>
+                                                                            <rect key="frame" x="0.0" y="60" width="240" height="20"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="height" constant="20" id="Qhw-Iz-g9C"/>
                                                                             </constraints>
@@ -514,6 +513,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bz2-Or-14A" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="GUi-PI-m12"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="T1v-4W-2uo">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -548,6 +548,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="DqF-Wr-qo2"/>
+        <segue reference="kCQ-ld-BV4"/>
     </inferredMetricsTieBreakers>
 </document>

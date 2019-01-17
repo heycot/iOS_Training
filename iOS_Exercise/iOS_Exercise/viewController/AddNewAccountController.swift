@@ -7,15 +7,16 @@
 //
 
 import UIKit
+import Darwin
 
-class AddNewAccountController: UIViewController {
+class AddNewAccountController: UIViewController, ViewControllerDelegate{
     
     @IBOutlet weak var name: UITextField!
     @IBOutlet weak var born: UITextField!
     @IBOutlet weak var gender: UITextField!
     @IBOutlet weak var descriptionView: UITextView!
     
-    @IBOutlet weak var okBtn: UIBarButtonItem!
+    @IBOutlet weak var doneBtn: UIBarButtonItem!
     
     let datePicker = UIDatePicker()
     let genderPicker = UIPickerView()
@@ -25,17 +26,16 @@ class AddNewAccountController: UIViewController {
     let noAvatar = "no_avatar"
     var genderData: [String] = [String]()
     
-    @IBAction func cancelBtnClick(_ sender: Any) {
-        self.navigationController?.popToRootViewController(animated: true)
+    @IBAction func cancelBtnClick(_ sender: UIBarButtonItem) {
+        exit(0)
     }
     
-    @IBAction func okBtnClicks(_ sender: UIButton) {
+    @IBAction func doneBtnClick(_ sender: Any?) {
         if ( name.text! == "" || born.text! == "" || gender.text! == "" || descriptionView.text! == "") {
             let alertController = UIAlertController(title: "Can not add!", message: "All information is required!", preferredStyle: UIAlertController.Style.alert)
             alertController.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
             present(alertController, animated: true, completion: nil)
         } else {
-            
             newUser.avatar = noAvatar
             newUser.name = name.text!
             newUser.born  = born.text!
@@ -58,19 +58,55 @@ class AddNewAccountController: UIViewController {
         }
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.destination is ViewController
-        {
-            let vc = segue.destination as? ViewController
-            vc?.user = newUser
+    func addNewAccount(controller: ViewController) {
+        if ( name.text! == "" || born.text! == "" || gender.text! == "" || descriptionView.text! == "") {
+            let alertController = UIAlertController(title: "Can not add!", message: "All information is required!", preferredStyle: UIAlertController.Style.alert)
+            alertController.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+            present(alertController, animated: true, completion: nil)
+            return
+        } else {
+            newUser.avatar = noAvatar
+            newUser.name = name.text!
+            newUser.born  = born.text!
+            
+            for i in 0..<genderData.count {
+                if (genderData[i] == gender.text!){
+                    newUser.gender = Int64(i)
+                }
+            }
+            newUser.description = descriptionView.text!
+            
+            if ( userBo.addOneUser(user: newUser) == true ) {
+                print("add new user success!")
+//                self.performSegue(withIdentifier: "ShowDetailUser", sender: self)
+                controller.navigationController?.popViewController(animated: true)
+            } else {
+                let alertController = UIAlertController(title: "Something went wrong!", message: "Try it later!", preferredStyle: UIAlertController.Style.alert)
+                alertController.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+                present(alertController, animated: true, completion: nil)
+            }
         }
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        let navVC = segue.destination as? UINavigationController
+        
+        if navVC?.viewControllers.first is ViewController {
+            let vc = navVC?.viewControllers.first as? ViewController
+            vc?.user = newUser
+            vc?.delegate = self
+        }
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         showDatePicker()
         showGenderPicker()
         descriptionView.delegate = self
+        born.delegate = self
+        gender.delegate = self
         textViewDidBeginEditing(descriptionView)
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard (_:)))
@@ -150,7 +186,37 @@ class AddNewAccountController: UIViewController {
         self.view.endEditing(true)
     }
     
+    
+    func validGenderInput(text: String) -> String {
+        let okayChars = Set("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLKMNOPQRSTUVWXYZ")
+        return text.filter {okayChars.contains($0) }
+    }
+    
+    func validBornInput(text: String) -> String {
+        let okayChars = Set("0123456789/")
+        return text.filter {okayChars.contains($0) }
+    }
+
+    
 }
+
+extension AddNewAccountController: UITextFieldDelegate {
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if  textField == born {
+            born.text = validBornInput(text: textField.text!)
+            
+            return string.rangeOfCharacter(from: CharacterSet.letters) == nil
+            
+        } else if textField == gender {
+            gender.text = validGenderInput(text: textField.text!)
+            return string.rangeOfCharacter(from: CharacterSet.decimalDigits) == nil
+        }
+        
+        return true
+    }
+}
+
 
 extension AddNewAccountController: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {

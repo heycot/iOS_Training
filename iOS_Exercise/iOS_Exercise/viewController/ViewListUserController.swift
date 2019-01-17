@@ -35,21 +35,20 @@ class ViewListUserController : UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         
-//
-//        tableView.estimatedRowHeight = 80.0
-//        tableView.rowHeight = UITableView.automaticDimension
-        
+        tableView.estimatedRowHeight = 80.0
+        tableView.rowHeight = UITableView.automaticDimension
         
         self.tableView.reloadData()
-        tableView.register(UINib(nibName: "CustomTableViewCell", bundle: nil), forCellReuseIdentifier: "CellItem")
     }
     
     @objc override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.destination is ViewController
-        {
-            let vc = segue.destination as? ViewController
-            vc?.user = sender as! User
+        
+        let navVC = segue.destination as? UINavigationController
+        
+        if navVC?.viewControllers.first is ViewController {
             
+            let vc = navVC?.viewControllers.first as? ViewController
+            vc?.user = sender as! User
         }
     }
 }
@@ -76,6 +75,16 @@ extension ViewListUserController : UITableViewDataSource {
         return cell
     }
     
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            if userBo.deleteOneUser(rowId: listUser[indexPath.row].id) {
+                
+                listUser.remove(at: indexPath.row)
+                tableView.deleteRows(at: [indexPath], with: .bottom)
+            }
+        }
+    }
+    
 }
 
 extension ViewListUserController : UITableViewDelegate {
@@ -84,6 +93,7 @@ extension ViewListUserController : UITableViewDelegate {
 //        let cell = tableView.cellForRow(at: indexPath)
         tableView.deselectRow(at: indexPath, animated: true)
         
+        print("slected row \(listUser[indexPath.row].name)")
         performSegue(withIdentifier: "ShowUserSelected", sender: listUser[indexPath.row])
     }
 }

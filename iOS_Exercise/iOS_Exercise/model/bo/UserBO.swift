@@ -63,13 +63,8 @@ class UserBO{
     
     
     
-    func removeOneUser(index:Int) -> Bool{
-//        if (index >= 0 && index < users.count) {
-//            users.remove(at: index)
-//            return true
-//        } else {
-            return false
-//        }
+    func deleteOneUser(rowId: Int64) -> Bool{
+        return TableUser.shared.deleteOneUser(rowId: rowId)
     }
     
     

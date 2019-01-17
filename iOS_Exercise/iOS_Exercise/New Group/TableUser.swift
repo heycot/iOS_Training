@@ -86,5 +86,18 @@ class TableUser{
         return result
     }
     
+    func deleteOneUser(rowId: Int64) -> Bool {
+        do {
+            
+            let alice = tableUser.filter(id == rowId)
+            try Database.db.connection?.run(alice.delete())
+            return true
+        } catch {
+            print("delete failed")
+        }
+        
+        return false
+    }
+    
 }
 

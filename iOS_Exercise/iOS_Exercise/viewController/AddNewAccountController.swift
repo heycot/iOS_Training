@@ -30,40 +30,39 @@ class AddNewAccountController: UIViewController, ViewControllerDelegate{
         exit(0)
     }
     
-    @IBAction func doneBtnClick(_ sender: Any?) {
-        if ( name.text! == "" || born.text! == "" || gender.text! == "" || descriptionView.text! == "") {
-            let alertController = UIAlertController(title: "Can not add!", message: "All information is required!", preferredStyle: UIAlertController.Style.alert)
-            alertController.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
-            present(alertController, animated: true, completion: nil)
-        } else {
-            newUser.avatar = noAvatar
-            newUser.name = name.text!
-            newUser.born  = born.text!
-            
-            for i in 0..<genderData.count {
-                if (genderData[i] == gender.text!){
-                    newUser.gender = Int64(i)
-                }
-            }
-            newUser.description = descriptionView.text!
-            
-            if ( userBo.addOneUser(user: newUser) == true ) {
-                print("add new user success!")
-                self.performSegue(withIdentifier: "ShowDetailUser", sender: self)
-            } else {
-                let alertController = UIAlertController(title: "Something went wrong!", message: "Try it later!", preferredStyle: UIAlertController.Style.alert)
-                alertController.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
-                present(alertController, animated: true, completion: nil)
-            }
-        }
-    }
+//    @IBAction func doneBtnClick(_ sender: Any?) {
+//        if ( name.text! == "" || born.text! == "" || gender.text! == "" || descriptionView.text! == "") {
+//            let alertController = UIAlertController(title: "Can not add!", message: "All information is required!", preferredStyle: UIAlertController.Style.alert)
+//            alertController.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+//            present(alertController, animated: true, completion: nil)
+//        } else {
+//            newUser.avatar = noAvatar
+//            newUser.name = name.text!
+//            newUser.born  = born.text!
+//
+//            for i in 0..<genderData.count {
+//                if (genderData[i] == gender.text!){
+//                    newUser.gender = Int64(i)
+//                }
+//            }
+//            newUser.description = descriptionView.text!
+//
+//            if ( userBo.addOneUser(user: newUser) == true ) {
+//                print("add new user success!")
+//                self.performSegue(withIdentifier: "ShowDetailUser", sender: self)
+//            } else {
+//                let alertController = UIAlertController(title: "Something went wrong!", message: "Try it later!", preferredStyle: UIAlertController.Style.alert)
+//                alertController.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+//                present(alertController, animated: true, completion: nil)
+//            }
+//        }
+//    }
     
-    func addNewAccount(controller: ViewController) {
+    func addNewAccount(controller: ViewController){
         if ( name.text! == "" || born.text! == "" || gender.text! == "" || descriptionView.text! == "") {
             let alertController = UIAlertController(title: "Can not add!", message: "All information is required!", preferredStyle: UIAlertController.Style.alert)
             alertController.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
             present(alertController, animated: true, completion: nil)
-            return
         } else {
             newUser.avatar = noAvatar
             newUser.name = name.text!

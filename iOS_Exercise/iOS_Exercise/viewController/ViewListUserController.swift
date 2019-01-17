@@ -60,14 +60,12 @@ extension ViewListUserController : UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("numberOfRowsInSection called")
         return listUser.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CellItem") as! CustomTableViewCell
 
-        print("show cell item")
         cell.avatar.image = UIImage(named: listUser[indexPath.row].avatar)
         cell.name.text = listUser[indexPath.row].name
         cell.born.text = listUser[indexPath.row].born
@@ -93,7 +91,6 @@ extension ViewListUserController : UITableViewDelegate {
 //        let cell = tableView.cellForRow(at: indexPath)
         tableView.deselectRow(at: indexPath, animated: true)
         
-        print("slected row \(listUser[indexPath.row].name)")
         performSegue(withIdentifier: "ShowUserSelected", sender: listUser[indexPath.row])
     }
 }

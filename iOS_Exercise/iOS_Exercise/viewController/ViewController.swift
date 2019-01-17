@@ -83,6 +83,8 @@ class ViewController: UIViewController {
             user = userBo.getUserDefault()
             showDetailAccount(user: user)
         }
+        
+        self.title = user.name
         disabledView()
     }
 }

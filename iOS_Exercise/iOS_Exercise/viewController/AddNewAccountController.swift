@@ -63,6 +63,8 @@ class AddNewAccountController: UIViewController, ViewControllerDelegate{
             let alertController = UIAlertController(title: "Can not add!", message: "All information is required!", preferredStyle: UIAlertController.Style.alert)
             alertController.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
             present(alertController, animated: true, completion: nil)
+            
+            return 
         } else {
             newUser.avatar = noAvatar
             newUser.name = name.text!
@@ -83,6 +85,8 @@ class AddNewAccountController: UIViewController, ViewControllerDelegate{
                 let alertController = UIAlertController(title: "Something went wrong!", message: "Try it later!", preferredStyle: UIAlertController.Style.alert)
                 alertController.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
                 present(alertController, animated: true, completion: nil)
+                
+                
             }
         }
     }

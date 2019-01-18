@@ -35,8 +35,8 @@ class ViewListUserController : UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         
-        tableView.estimatedRowHeight = 80.0
         tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 150.0
         
         self.tableView.reloadData()
     }

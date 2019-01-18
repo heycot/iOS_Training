@@ -9,12 +9,6 @@
 import UIKit
 import Darwin
 
-//import <UITextView+Placeholder/UITextView+Placeholder.h>
-
-protocol ViewControllerDelegate {
-    func addNewAccount(controller: ViewController)
-}
-
 class ViewController: UIViewController {
     
     @IBOutlet weak var avatar: UIImageView!
@@ -25,7 +19,6 @@ class ViewController: UIViewController {
     
     var userBo = UserBO()
     var user = User()
-    var delegate:ViewControllerDelegate? = nil
     
     func prepareShowDetailAccount() {
         name.text = ""
@@ -63,7 +56,6 @@ class ViewController: UIViewController {
 //        self.navigationController?.popToRootViewController(animated: true)
         
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "ViewListUserControllerID")
-        
         self.navigationController?.pushViewController(vc!, animated: false)
      }
     
@@ -74,8 +66,6 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         prepareShowDetailAccount()
-        
-        delegate?.addNewAccount(controller: self)
         
         if (user.name != "") {
             showDetailAccount(user: user)

@@ -343,7 +343,6 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="KKY-Ku-HHc">
                             <connections>
                                 <action selector="doneBtnClick:" destination="g5g-hA-Nv0" id="WAA-wC-Zv1"/>
-                                <segue destination="Ipe-ar-kJj" kind="show" identifier="ShowDetailUser" id="kCQ-ld-BV4"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -353,6 +352,7 @@
                         <outlet property="doneBtn" destination="KKY-Ku-HHc" id="Lb9-Hj-8tu"/>
                         <outlet property="gender" destination="tbG-ES-VIg" id="vyJ-cH-Wlk"/>
                         <outlet property="name" destination="kVo-Sg-hjQ" id="wTg-8q-qhu"/>
+                        <segue destination="Ipe-ar-kJj" kind="show" identifier="ShowDetailUser" id="V6r-XM-AyX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bjH-n7-dQ2" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -548,6 +548,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="kCQ-ld-BV4"/>
+        <segue reference="DqF-Wr-qo2"/>
     </inferredMetricsTieBreakers>
 </document>

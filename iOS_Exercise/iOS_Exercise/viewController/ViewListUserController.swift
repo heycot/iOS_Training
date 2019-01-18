@@ -36,14 +36,14 @@ class ViewListUserController : UIViewController {
         tableView.delegate = self
         
         self.tableView.reloadData()
+        tableView.estimatedRowHeight = UITableView.automaticDimension
+        tableView.rowHeight = UITableView.automaticDimension
     }
     
     @objc override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         let navVC = segue.destination as? UINavigationController
-        
         if navVC?.viewControllers.first is ViewController {
-            
             let vc = navVC?.viewControllers.first as? ViewController
             vc?.user = sender as! User
         }
@@ -80,14 +80,14 @@ extension ViewListUserController : UITableViewDataSource {
         }
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableView.automaticDimension
-        
-    }
-    
-    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return  80.0
-    }
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return UITableView.automaticDimension
+//
+//    }
+//
+//    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return  500.0
+//    }
     
 }
 
@@ -96,7 +96,6 @@ extension ViewListUserController : UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 //        let cell = tableView.cellForRow(at: indexPath)
         tableView.deselectRow(at: indexPath, animated: true)
-        
         performSegue(withIdentifier: "ShowUserSelected", sender: listUser[indexPath.row])
     }
 }

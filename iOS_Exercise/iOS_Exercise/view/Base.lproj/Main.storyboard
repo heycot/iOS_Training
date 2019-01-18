@@ -423,7 +423,6 @@
                                                                 </stackView>
                                                             </subviews>
                                                             <constraints>
-                                                                <constraint firstItem="LJH-4O-PiQ" firstAttribute="height" secondItem="QaU-v6-qa8" secondAttribute="height" id="1TN-np-hhp"/>
                                                                 <constraint firstItem="QaU-v6-qa8" firstAttribute="height" secondItem="1CV-7n-qlL" secondAttribute="height" id="bMQ-XT-gPz"/>
                                                                 <constraint firstItem="QaU-v6-qa8" firstAttribute="leading" secondItem="1CV-7n-qlL" secondAttribute="leading" id="d7j-5K-JQC"/>
                                                             </constraints>
@@ -488,7 +487,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tbT-MP-FOU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-789.60000000000002" y="431.33433283358323"/>
+            <point key="canvasLocation" x="-873" y="443"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="8B9-l8-ngj">

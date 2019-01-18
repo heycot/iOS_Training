@@ -35,9 +35,6 @@ class ViewListUserController : UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         
-        tableView.rowHeight = UITableView.automaticDimension
-        tableView.estimatedRowHeight = 150.0
-        
         self.tableView.reloadData()
     }
     
@@ -81,6 +78,15 @@ extension ViewListUserController : UITableViewDataSource {
                 tableView.deleteRows(at: [indexPath], with: .bottom)
             }
         }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+        
+    }
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return  80.0
     }
     
 }

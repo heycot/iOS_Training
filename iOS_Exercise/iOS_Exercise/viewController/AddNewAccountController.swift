@@ -58,62 +58,30 @@ class AddNewAccountController: UIViewController{
         }
     }
     
-//    func addNewAccount(controller: ViewController){
-//        if ( name.text! == "" || born.text! == "" || gender.text! == "" || descriptionView.text! == "") {
-//            let alertController = UIAlertController(title: "Can not add!", message: "All information is required!", preferredStyle: UIAlertController.Style.alert)
-//            alertController.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
-//            present(alertController, animated: true, completion: nil)
-//
-//            return
-//        } else {
-//            newUser.avatar = noAvatar
-//            newUser.name = name.text!
-//            newUser.born  = born.text!
-//
-//            for i in 0..<genderData.count {
-//                if (genderData[i] == gender.text!){
-//                    newUser.gender = Int64(i)
-//                }
-//            }
-//            newUser.description = descriptionView.text!
-//
-//            if ( userBo.addOneUser(user: newUser) == true ) {
-//                print("add new user success!")
-////                self.performSegue(withIdentifier: "ShowDetailUser", sender: self)
-//                controller.navigationController?.popViewController(animated: true)
-//            } else {
-//                let alertController = UIAlertController(title: "Something went wrong!", message: "Try it later!", preferredStyle: UIAlertController.Style.alert)
-//                alertController.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
-//                present(alertController, animated: true, completion: nil)
-//
-//
-//            }
-//        }
-//    }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         let navVC = segue.destination as? UINavigationController
-        
         if navVC?.viewControllers.first is ViewController {
             let vc = navVC?.viewControllers.first as? ViewController
             vc?.user = newUser
-//            vc?.delegate = self
         }
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        showDateAndGender()
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard (_:)))
+        self.view.addGestureRecognizer(tapGesture)
+    }
+    
+    func showDateAndGender() {
         showDatePicker()
         showGenderPicker()
         descriptionView.delegate = self
         born.delegate = self
         gender.delegate = self
         textViewDidBeginEditing(descriptionView)
-        
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard (_:)))
-        self.view.addGestureRecognizer(tapGesture)
     }
     
     @objc func dismissKeyboard (_ sender: UITapGestureRecognizer) {
@@ -147,7 +115,6 @@ class AddNewAccountController: UIViewController{
         born.inputAccessoryView = toolbar
         // add datepicker to textField
         born.inputView = datePicker
-
     }
     
     @objc func donedatePicker(){
@@ -189,7 +156,6 @@ class AddNewAccountController: UIViewController{
         self.view.endEditing(true)
     }
     
-    
     func validGenderInput(text: String) -> String {
         let okayChars = Set("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLKMNOPQRSTUVWXYZ")
         return text.filter {okayChars.contains($0) }
@@ -199,8 +165,6 @@ class AddNewAccountController: UIViewController{
         let okayChars = Set("0123456789/")
         return text.filter {okayChars.contains($0) }
     }
-
-    
 }
 
 extension AddNewAccountController: UITextFieldDelegate {
@@ -208,7 +172,6 @@ extension AddNewAccountController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         if  textField == born {
             born.text = validBornInput(text: textField.text!)
-            
             return string.rangeOfCharacter(from: CharacterSet.letters) == nil
             
         } else if textField == gender {

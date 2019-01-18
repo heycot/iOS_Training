@@ -17,7 +17,6 @@ class ViewListUserController : UIViewController {
     var listUser = [User]()
     var userSelected = User()
     
-    
     func prepareData() {
         listUser = userBo.getListUser()
     }
@@ -37,7 +36,8 @@ class ViewListUserController : UIViewController {
         
         self.tableView.reloadData()
         tableView.estimatedRowHeight = UITableView.automaticDimension
-        tableView.rowHeight = UITableView.automaticDimension
+//        tableView.rowHeight = UITableView.automaticDimension
+        tableView.rowHeight = 65
     }
     
     @objc override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -86,7 +86,7 @@ extension ViewListUserController : UITableViewDataSource {
 //    }
 //
 //    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return  500.0
+//        return  80
 //    }
     
 }

@@ -27,12 +27,10 @@ class ViewController: UIViewController {
         descriptionView.text = ""
     }
     
-    
     func showDetailAccount(user:User) {
 //        let image : UIImage = UIImage(named: user.avatar)!
 //        avatar? = UIImageView(image: image)
         avatar.image = UIImage(named: user.avatar)
-        
         
         name?.text = user.name
         born?.text = user.born

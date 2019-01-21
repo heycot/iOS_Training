@@ -21,13 +21,11 @@ class ViewListUserController : UIViewController {
         listUser = userBo.getListUser()
     }
     
-    @IBAction func cancelBtnClick(_ sender: Any) {
-        exit(0)
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.tableFooterView = UIView()
+        
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: nil, action: nil)
         
         prepareData()
         print("list user :", listUser.count)
@@ -38,6 +36,7 @@ class ViewListUserController : UIViewController {
         tableView.estimatedRowHeight = UITableView.automaticDimension
 //        tableView.rowHeight = UITableView.automaticDimension
         tableView.rowHeight = 65
+        
     }
     
     @objc override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

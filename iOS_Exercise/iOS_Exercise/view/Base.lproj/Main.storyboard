@@ -156,14 +156,9 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="3l1-us-oW5">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="4vw-tu-3m9">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="4vw-tu-3m9">
                             <connections>
-                                <action selector="cancelBtnClick:" destination="BYZ-38-t0r" id="tkK-Ie-lnv"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="1aO-Kk-4fU">
-                            <connections>
-                                <action selector="doneBtnClick:" destination="BYZ-38-t0r" id="geY-dg-gqM"/>
+                                <action selector="backBtnClick:" destination="BYZ-38-t0r" id="Gw6-w6-GjP"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -177,7 +172,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1071" y="322"/>
+            <point key="canvasLocation" x="778" y="322"/>
         </scene>
         <!--Add New Account-->
         <scene sceneID="VrD-DU-rR6">
@@ -335,21 +330,21 @@
                         <viewLayoutGuide key="safeArea" id="RlS-CR-bHR"/>
                     </view>
                     <navigationItem key="navigationItem" title="add new account" id="O7Y-bd-7Hu">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="dqc-wa-57z">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="dqc-wa-57z">
                             <connections>
-                                <action selector="cancelBtnClick:" destination="g5g-hA-Nv0" id="5Se-ly-pbq"/>
+                                <action selector="backBtnClick:" destination="g5g-hA-Nv0" id="6DC-e6-Mcz"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="KKY-Ku-HHc">
                             <connections>
-                                <action selector="doneBtnClick:" destination="g5g-hA-Nv0" id="WAA-wC-Zv1"/>
+                                <action selector="doneBtnClick:" destination="g5g-hA-Nv0" id="ogW-Cc-CLy"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="born" destination="W3L-Tv-id4" id="xSD-eB-tIR"/>
                         <outlet property="descriptionView" destination="GHq-4C-9jD" id="rmz-SY-HPi"/>
-                        <outlet property="doneBtn" destination="KKY-Ku-HHc" id="Lb9-Hj-8tu"/>
+                        <outlet property="doneBtn" destination="KKY-Ku-HHc" id="AQK-QD-hf7"/>
                         <outlet property="gender" destination="tbG-ES-VIg" id="vyJ-cH-Wlk"/>
                         <outlet property="name" destination="kVo-Sg-hjQ" id="wTg-8q-qhu"/>
                         <segue destination="Ipe-ar-kJj" kind="show" identifier="ShowDetailUser" id="V6r-XM-AyX"/>
@@ -463,11 +458,6 @@
                         <viewLayoutGuide key="safeArea" id="sff-tq-dDE"/>
                     </view>
                     <navigationItem key="navigationItem" title="user" id="ll4-i9-f2r">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="z4x-Xy-0ZO">
-                            <connections>
-                                <action selector="cancelBtnClick:" destination="zoZ-DQ-U54" id="QrB-ow-hNM"/>
-                            </connections>
-                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="9TE-RD-HTY">
                             <connections>
                                 <segue destination="bz2-Or-14A" kind="show" identifier="addAccountBtn" id="xzD-f0-mvw"/>
@@ -537,7 +527,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cs8-6i-KcX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="218" y="322"/>
+            <point key="canvasLocation" x="92" y="322"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

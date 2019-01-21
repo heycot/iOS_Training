@@ -26,8 +26,11 @@ class AddNewAccountController: UIViewController{
     let noAvatar = "no_avatar"
     var genderData: [String] = [String]()
     
-    @IBAction func cancelBtnClick(_ sender: UIBarButtonItem) {
-        exit(0)
+    @IBAction func backBtnClick(_ sender: UIBarButtonItem) {
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "ViewListUserControllerID")
+        self.navigationController?.pushViewController(vc!, animated: false)
+        
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: nil, action: nil)
     }
     
     @IBAction func doneBtnClick(_ sender: Any?) {

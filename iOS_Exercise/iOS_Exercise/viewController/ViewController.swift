@@ -50,15 +50,14 @@ class ViewController: UIViewController {
         descriptionView.isEditable = false
     }
     
-    @IBAction func doneBtnClick(_ sender: Any) {
+    @IBAction func backBtnClick(_ sender: Any) {
 //        self.navigationController?.popToRootViewController(animated: true)
         
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "ViewListUserControllerID")
         self.navigationController?.pushViewController(vc!, animated: false)
-     }
-    
-    @IBAction func cancelBtnClick(_ sender: Any) {
-        exit(0)
+        
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: nil, action: nil)
+
     }
     
     override func viewDidLoad() {

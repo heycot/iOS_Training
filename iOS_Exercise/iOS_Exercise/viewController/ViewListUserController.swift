@@ -41,9 +41,15 @@ class ViewListUserController : UIViewController {
     
     @objc override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        let navVC = segue.destination as? UINavigationController
-        if navVC?.viewControllers.first is ViewController {
-            let vc = navVC?.viewControllers.first as? ViewController
+//        let navVC = segue.destination as? UINavigationController
+//        if navVC?.viewControllers.first is ViewController {
+//            let vc = navVC?.viewControllers.first as? ViewController
+//            vc?.user = sender as! User
+//        }
+        
+        if segue.destination is ViewController
+        {
+            let vc = segue.destination as? ViewController
             vc?.user = sender as! User
         }
     }

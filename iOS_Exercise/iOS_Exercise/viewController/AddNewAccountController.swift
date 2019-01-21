@@ -63,9 +63,15 @@ class AddNewAccountController: UIViewController{
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        let navVC = segue.destination as? UINavigationController
-        if navVC?.viewControllers.first is ViewController {
-            let vc = navVC?.viewControllers.first as? ViewController
+//        let navVC = segue.destination as? UINavigationController
+//        if navVC?.viewControllers.first is ViewController {
+//            let vc = navVC?.viewControllers.first as? ViewController
+//            vc?.user = newUser
+//        }
+        
+        if segue.destination is ViewController
+        {
+            let vc = segue.destination as? ViewController
             vc?.user = newUser
         }
     }

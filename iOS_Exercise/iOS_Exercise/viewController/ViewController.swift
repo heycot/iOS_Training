@@ -14,40 +14,55 @@ class ViewController: UIViewController {
     @IBOutlet weak var avatar: UIImageView!
     @IBOutlet weak var name: UITextField!
     @IBOutlet weak var born: UITextField!
-    @IBOutlet weak var gender: UITextField!
     @IBOutlet weak var descriptionView: UITextView!
+    @IBOutlet weak var follower: UITextField!
+    @IBOutlet weak var update: UITextField!
+    @IBOutlet weak var following: UITextField!
     
+    @IBOutlet weak var generalStackView: UIStackView!
     var userBo = UserBO()
     var user = User()
     
     func prepareShowDetailAccount() {
         name.text = ""
         born.text = ""
-        gender.text = ""
         descriptionView.text = ""
+        
+        
     }
     
     func showDetailAccount(user:User) {
 //        let image : UIImage = UIImage(named: user.avatar)!
 //        avatar? = UIImageView(image: image)
         avatar.image = UIImage(named: user.avatar)
+        avatar.setRounded(color: UIColor.white)
         
         name?.text = user.name
-        born?.text = user.born
+//        born?.text = user.born + " | Male"
         descriptionView?.text = user.description
         
         if (user.gender == 0) {
-            gender?.text = "Male"
+            
+            born?.text = user.born + " | Male"
         } else {
-            gender?.text = "Female"
+            
+            born?.text = user.born + " | Female"
         }
+        
+        following.text = "500"
+        follower.text = "200K"
+        update.text = "15K"
+        
     }
     
     func disabledView() {
         name.isEnabled = false
         born.isEnabled = false
-        gender.isEnabled = false
         descriptionView.isEditable = false
+        
+        follower.isEnabled = false
+        following.isEnabled = false
+        update.isEnabled = false
     }
     
     @IBAction func backBtnClick(_ sender: Any) {
@@ -55,9 +70,6 @@ class ViewController: UIViewController {
         
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "ViewListUserControllerID")
         self.navigationController?.pushViewController(vc!, animated: false)
-        
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: nil, action: nil)
-
     }
     
     override func viewDidLoad() {
@@ -73,6 +85,20 @@ class ViewController: UIViewController {
         
         self.title = user.name
         disabledView()
+        
+        generalStackView.addBackground(color: UIColor(red: CGFloat(238.0/255.0), green: CGFloat(238.0/255.0), blue: CGFloat(238.0/255.0), alpha: CGFloat(1.0)))
     }
+}
+
+
+extension UIStackView {
+    
+    func addBackground(color: UIColor) {
+        let subview = UIView(frame: bounds)
+        subview.backgroundColor = color
+        subview.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        insertSubview(subview, at: 0)
+    }
+    
 }
 

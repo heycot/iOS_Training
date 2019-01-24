@@ -50,3 +50,21 @@ import Foundation
 //
 //}
 
+
+//extension UITextField {
+//    func setBottomBorder(color: UIColor) {
+//        let bottomLine = CALayer()
+//        bottomLine.frame = CGRect(x: 0.0, y: self.frame.height - 1, width: self.frame.width, height: 1.0)
+//        bottomLine.backgroundColor = color.cgColor
+//        self.borderStyle = UITextField.BorderStyle.none
+//        self.layer.addSublayer(bottomLine)
+//    }
+//    
+//    func setLeftBorder(color: UIColor) {
+//        let bottomLine = CALayer()
+//        bottomLine.frame = CGRect(x: -10.0, y: 0.0, width: 1.0, height: self.frame.height)
+//        bottomLine.backgroundColor = color.cgColor
+//        self.borderStyle = UITextField.BorderStyle.none
+//        self.layer.addSublayer(bottomLine)
+//    }
+//}

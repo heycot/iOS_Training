@@ -29,8 +29,6 @@ class AddNewAccountController: UIViewController{
     @IBAction func backBtnClick(_ sender: UIBarButtonItem) {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "ViewListUserControllerID")
         self.navigationController?.pushViewController(vc!, animated: false)
-        
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: nil, action: nil)
     }
     
     @IBAction func doneBtnClick(_ sender: Any?) {
@@ -119,7 +117,7 @@ class AddNewAccountController: UIViewController{
         let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
         let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelPicker));
         
-        toolbar.setItems([doneButton,spaceButton,cancelButton], animated: false)
+        toolbar.setItems([cancelButton, spaceButton, doneButton], animated: false)
         // add toolbar to textField
         born.inputAccessoryView = toolbar
         // add datepicker to textField
@@ -146,7 +144,7 @@ class AddNewAccountController: UIViewController{
         let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
         let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelPicker));
         
-        toolbar.setItems([doneButton,spaceButton,cancelButton], animated: false)
+        toolbar.setItems([cancelButton, spaceButton, doneButton], animated: false)
         // add toolbar to textField
         gender.inputAccessoryView = toolbar
         
@@ -198,6 +196,8 @@ extension AddNewAccountController: UITextViewDelegate {
         if textView.text.isEmpty {
             textView.text = "Enter description"
             textView.textColor = UIColor.lightGray
+            textView.layer.borderColor = UIColor(red: CGFloat(237.0/255.0), green: CGFloat(237.0/255.0), blue: CGFloat(237.0/255.0), alpha: CGFloat(1.0)).cgColor
+            textView.layer.borderWidth = 1.0
         }
     }
     
@@ -207,6 +207,7 @@ extension AddNewAccountController: UITextViewDelegate {
             textView.textColor = UIColor.black
         }
     }
+    
 }
 
 extension AddNewAccountController: UIPickerViewDelegate, UIPickerViewDataSource {

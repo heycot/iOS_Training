@@ -25,7 +25,7 @@ class ViewListUserController : UIViewController {
         super.viewDidLoad()
         tableView.tableFooterView = UIView()
         
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: nil, action: nil)
+        navigationItem.hidesBackButton = true
         
         prepareData()
         print("list user :", listUser.count)
@@ -35,7 +35,7 @@ class ViewListUserController : UIViewController {
         self.tableView.reloadData()
         tableView.estimatedRowHeight = UITableView.automaticDimension
 //        tableView.rowHeight = UITableView.automaticDimension
-        tableView.rowHeight = 65
+        tableView.rowHeight = 70
         
     }
     
@@ -69,6 +69,7 @@ extension ViewListUserController : UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CellItem") as! CustomTableViewCell
 
         cell.avatar.image = UIImage(named: listUser[indexPath.row].avatar)
+        cell.avatar.setRounded(color: UIColor(red: CGFloat(81.0/255.0), green: CGFloat(110.0/255.0), blue: CGFloat(173.0/255.0), alpha: CGFloat(1.0)))
         cell.name.text = listUser[indexPath.row].name
         cell.born.text = listUser[indexPath.row].born
 
@@ -76,6 +77,7 @@ extension ViewListUserController : UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+
         if editingStyle == .delete {
             if userBo.deleteOneUser(rowId: listUser[indexPath.row].id) {
                 
@@ -84,16 +86,22 @@ extension ViewListUserController : UITableViewDataSource {
             }
         }
     }
-    
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return UITableView.automaticDimension
+//    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
 //
-//    }
+////        let editAction = UITableViewRowAction(style: .normal, title: "Edit") { (rowAction, indexPath) in
+////            //TODO: edit the row at indexPath here
+////        }
+////        editAction.backgroundColor = UIColor(patternImage: UIImage(named: "edit_icon")!)
 //
-//    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return  80
+//        let deleteAction = UITableViewRowAction(style: .default, title: "Delete") { (rowAction, indexPath) in
+//            //TODO: Delete the row at indexPath here
+//        }
+//        deleteAction.backgroundColor =  UIColor(patternImage: UIImage(named: "delete_icon")!)
+//
+////        return [editAction,deleteAction]
+//        
+//        return [deleteAction]
 //    }
-    
 }
 
 extension ViewListUserController : UITableViewDelegate {
@@ -103,8 +111,20 @@ extension ViewListUserController : UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         performSegue(withIdentifier: "ShowUserSelected", sender: listUser[indexPath.row])
     }
+    
 }
 
+
+extension UIImageView {
+    
+    func setRounded(color: UIColor) {
+        self.layer.cornerRadius = (self.frame.size.width / 2) //instead of let radius = CGRectGetWidth(self.frame) / 2
+        self.layer.masksToBounds = true
+        self.clipsToBounds = true
+        self.layer.borderWidth = 3.0
+        self.layer.borderColor = color.cgColor
+    }
+}
 
 
 

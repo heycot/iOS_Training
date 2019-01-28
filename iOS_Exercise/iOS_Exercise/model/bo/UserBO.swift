@@ -67,6 +67,9 @@ class UserBO{
         return TableUser.shared.deleteOneUser(rowId: rowId)
     }
     
-    
+    func deleteAvatar(rowId: Int64) -> Bool {
+        
+        return TableUser.shared.deleteAvatar(rowId: rowId)
+    }
     
 }

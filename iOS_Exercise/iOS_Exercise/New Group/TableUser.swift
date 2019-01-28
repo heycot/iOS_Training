@@ -99,5 +99,21 @@ class TableUser{
         return false
     }
     
+    func deleteAvatar(rowId: Int64) -> Bool {
+        do {
+            let edit = tableUser.filter(id == rowId)
+//            try Database.db.connection?.run(edit.update(avatar <- avatar.replace("", with: "no_avatar")))
+            
+            
+            try Database.db.connection?.run(edit.update(avatar <- "no_avatar"))
+            
+            return true
+        } catch {
+            print("delete avatar failed")
+        }
+        
+        return false
+    }
+    
 }
 

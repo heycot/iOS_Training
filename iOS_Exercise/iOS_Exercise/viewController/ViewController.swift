@@ -9,7 +9,7 @@
 import UIKit
 import Darwin
 
-class ViewController: UIViewController {
+class ViewController:  UIViewController{
     
     @IBOutlet weak var avatar: UIImageView!
     @IBOutlet weak var name: UITextField!
@@ -18,8 +18,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var follower: UITextField!
     @IBOutlet weak var update: UITextField!
     @IBOutlet weak var following: UITextField!
-    
     @IBOutlet weak var generalStackView: UIStackView!
+    
     var userBo = UserBO()
     var user = User()
     
@@ -27,15 +27,17 @@ class ViewController: UIViewController {
         name.text = ""
         born.text = ""
         descriptionView.text = ""
-        
-        
     }
+    
     
     func showDetailAccount(user:User) {
 //        let image : UIImage = UIImage(named: user.avatar)!
 //        avatar? = UIImageView(image: image)
         avatar.image = UIImage(named: user.avatar)
         avatar.setRounded(color: UIColor.white)
+        let singleTap = UITapGestureRecognizer(target: self, action: #selector(ViewController.clickAvatar))
+        avatar.isUserInteractionEnabled = true
+        avatar.addGestureRecognizer(singleTap)
         
         name?.text = user.name
 //        born?.text = user.born + " | Male"
@@ -53,6 +55,20 @@ class ViewController: UIViewController {
         follower.text = "200K"
         update.text = "15K"
         
+    }
+    
+    //Action
+    @objc func clickAvatar() {
+        print("Imageview Clicked")
+        performSegue(withIdentifier: "showHandleAvatar", sender: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.destination is HandleAvatarViewController
+        {
+            let vc = segue.destination as? HandleAvatarViewController
+            vc?.user = user
+        }
     }
     
     func disabledView() {
@@ -89,7 +105,6 @@ class ViewController: UIViewController {
         generalStackView.addBackground(color: UIColor(red: CGFloat(238.0/255.0), green: CGFloat(238.0/255.0), blue: CGFloat(238.0/255.0), alpha: CGFloat(1.0)))
     }
 }
-
 
 extension UIStackView {
     

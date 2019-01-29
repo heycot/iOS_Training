@@ -71,7 +71,7 @@ extension ViewListUserController : UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CellItem") as! CustomTableViewCell
 
         cell.avatar.image = Config.getImage(nameImage: listUser[indexPath.row].avatar)
-        cell.avatar.setRounded(color: UIColor(red: CGFloat(81.0/255.0), green: CGFloat(110.0/255.0), blue: CGFloat(173.0/255.0), alpha: CGFloat(1.0)))
+        cell.avatar.setRounded(color: UIColor.white)
         cell.name.text = listUser[indexPath.row].name
         cell.born.text = listUser[indexPath.row].born
 

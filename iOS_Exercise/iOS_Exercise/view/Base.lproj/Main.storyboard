@@ -29,7 +29,7 @@
                                         </constraints>
                                     </imageView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="21" translatesAutoresizingMaskIntoConstraints="NO" id="bt6-aI-RCs" userLabel="StackDescriptionView">
-                                        <rect key="frame" x="20" y="290" width="335" height="303"/>
+                                        <rect key="frame" x="20" y="290" width="335" height="148"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="About:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Da3-OW-j6z">
                                                 <rect key="frame" x="0.0" y="0.0" width="56.5" height="40"/>
@@ -41,7 +41,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7IV-sW-QEm" userLabel="Description Text View">
-                                                <rect key="frame" x="0.0" y="61" width="335" height="242"/>
+                                                <rect key="frame" x="0.0" y="61" width="335" height="87"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <color key="tintColor" red="0.23696334869999999" green="0.66666668650000005" blue="0.22900883960000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -153,13 +153,53 @@
                                             <constraint firstItem="yPc-6q-DuZ" firstAttribute="height" secondItem="bpF-XW-vj8" secondAttribute="height" constant="-10" id="hjX-oB-R2Q"/>
                                         </constraints>
                                     </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Iot-r3-i47" userLabel="Friends Stack View">
+                                        <rect key="frame" x="32.5" y="448" width="310" height="135"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Friends " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NNB-Ua-iUV">
+                                                <rect key="frame" x="0.0" y="0.0" width="310" height="25"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="25" id="PXT-iN-mDF"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" red="0.0" green="0.39215686274509803" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="fV4-yn-OuT" userLabel="Friends Image Stack View">
+                                                <rect key="frame" x="0.0" y="45" width="310" height="90"/>
+                                                <subviews>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="L7E-lJ-liE">
+                                                        <rect key="frame" x="0.0" y="0.0" width="90" height="90"/>
+                                                        <color key="backgroundColor" red="0.96470588235294119" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="L7E-lJ-liE" secondAttribute="height" multiplier="1:1" priority="999" id="N15-7f-oo0"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jid-ET-XJb">
+                                                        <rect key="frame" x="110" y="0.0" width="90" height="90"/>
+                                                    </imageView>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0Pp-Dp-yYf">
+                                                        <rect key="frame" x="220" y="0.0" width="90" height="90"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </imageView>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="fV4-yn-OuT" firstAttribute="width" secondItem="Iot-r3-i47" secondAttribute="width" id="1Qg-Y7-DST"/>
+                                            <constraint firstAttribute="width" constant="310" id="HGf-cL-6OJ"/>
+                                            <constraint firstAttribute="height" constant="135" id="clf-Jw-BGn"/>
+                                            <constraint firstItem="fV4-yn-OuT" firstAttribute="centerX" secondItem="Iot-r3-i47" secondAttribute="centerX" id="hHe-Ln-13R"/>
+                                        </constraints>
+                                    </stackView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="1ry-Ub-4w4" firstAttribute="leading" secondItem="p2A-sy-7Zl" secondAttribute="leading" id="29m-gu-ji7"/>
                                     <constraint firstItem="k00-KH-adr" firstAttribute="top" secondItem="uo8-Xd-oRZ" secondAttribute="bottom" id="9B9-g0-bB5"/>
                                     <constraint firstItem="k00-KH-adr" firstAttribute="trailing" secondItem="uo8-Xd-oRZ" secondAttribute="trailing" id="Br9-bF-9LF"/>
-                                    <constraint firstAttribute="bottom" secondItem="bt6-aI-RCs" secondAttribute="bottom" constant="10" id="DJ0-9A-XPV"/>
+                                    <constraint firstItem="Iot-r3-i47" firstAttribute="top" secondItem="bt6-aI-RCs" secondAttribute="bottom" constant="10" id="DJ0-9A-XPV"/>
+                                    <constraint firstItem="Iot-r3-i47" firstAttribute="bottom" secondItem="p2A-sy-7Zl" secondAttribute="bottom" constant="-20" id="ETG-Tt-c0Z"/>
                                     <constraint firstItem="7cz-4K-P3L" firstAttribute="height" secondItem="bpF-XW-vj8" secondAttribute="height" constant="-10" id="FwS-eR-ZdP"/>
                                     <constraint firstItem="uNL-Oe-537" firstAttribute="bottom" secondItem="1ry-Ub-4w4" secondAttribute="bottom" constant="-5" id="HjN-yq-gts"/>
                                     <constraint firstItem="1ry-Ub-4w4" firstAttribute="top" secondItem="p2A-sy-7Zl" secondAttribute="top" id="MDb-3y-nBz"/>
@@ -171,6 +211,7 @@
                                     <constraint firstItem="bt6-aI-RCs" firstAttribute="top" secondItem="bpF-XW-vj8" secondAttribute="bottom" constant="20" id="aon-4z-pRK"/>
                                     <constraint firstItem="uo8-Xd-oRZ" firstAttribute="trailing" secondItem="1ry-Ub-4w4" secondAttribute="trailing" constant="-10" id="dEY-R9-UpN"/>
                                     <constraint firstItem="k00-KH-adr" firstAttribute="bottom" secondItem="1ry-Ub-4w4" secondAttribute="bottom" constant="-12" id="fRH-vY-YwL"/>
+                                    <constraint firstItem="Iot-r3-i47" firstAttribute="centerX" secondItem="p2A-sy-7Zl" secondAttribute="centerX" id="ibR-SX-5CW"/>
                                     <constraint firstItem="uo8-Xd-oRZ" firstAttribute="leading" secondItem="uNL-Oe-537" secondAttribute="trailing" constant="15" id="ihI-GI-DCf"/>
                                     <constraint firstItem="bt6-aI-RCs" firstAttribute="leading" secondItem="p2A-sy-7Zl" secondAttribute="leading" constant="20" id="oFW-G5-nT3"/>
                                     <constraint firstItem="bpF-XW-vj8" firstAttribute="centerX" secondItem="p2A-sy-7Zl" secondAttribute="centerX" id="pd9-Ix-La6"/>
@@ -201,20 +242,23 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="ThirdFriendImage" destination="0Pp-Dp-yYf" id="njd-oe-DmP"/>
                         <outlet property="avatar" destination="uNL-Oe-537" id="dgM-sc-csw"/>
                         <outlet property="born" destination="k00-KH-adr" id="xgT-6Y-m0g"/>
                         <outlet property="descriptionView" destination="7IV-sW-QEm" id="arB-0Q-cav"/>
+                        <outlet property="firstFriendImage" destination="L7E-lJ-liE" id="o3h-Nd-BlU"/>
                         <outlet property="follower" destination="6Eb-lq-H1H" id="757-9f-Biq"/>
                         <outlet property="following" destination="qOu-gj-0E3" id="ANZ-zP-CmC"/>
                         <outlet property="generalStackView" destination="bpF-XW-vj8" id="vzL-vu-FGN"/>
                         <outlet property="name" destination="uo8-Xd-oRZ" id="wQS-w2-yAx"/>
+                        <outlet property="secondFriendImage" destination="jid-ET-XJb" id="KKQ-sq-SCi"/>
                         <outlet property="update" destination="Wm2-Qy-lQR" id="vrk-Sk-oDZ"/>
                         <segue destination="Mj4-9B-8ha" kind="presentation" identifier="showHandleAvatar" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="g14-Wo-bfn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="746" y="219"/>
+            <point key="canvasLocation" x="61.600000000000001" y="331.48425787106447"/>
         </scene>
         <!--Handle Avatar View Controller-->
         <scene sceneID="aXi-ck-vOW">
@@ -612,6 +656,6 @@
         <image name="avatar_background" width="2160" height="1350"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Hso-sS-ezR"/>
+        <segue reference="SVD-zL-OVD"/>
     </inferredMetricsTieBreakers>
 </document>

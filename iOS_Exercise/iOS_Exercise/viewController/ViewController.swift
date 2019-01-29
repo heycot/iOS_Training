@@ -19,6 +19,10 @@ class ViewController:  UIViewController{
     @IBOutlet weak var following: UITextField!
     @IBOutlet weak var generalStackView: UIStackView!
     
+    @IBOutlet weak var firstFriendImage: UIImageView!
+    @IBOutlet weak var secondFriendImage: UIImageView!
+    @IBOutlet weak var thirdFriendImage: UIImageView!
+    
     var userBo = UserBO()
     var user = User()
     
@@ -67,6 +71,7 @@ class ViewController:  UIViewController{
         follower.text = "200K"
         update.text = "15K"
         
+        showFriends()
     }
     
     func disabledView() {
@@ -83,10 +88,40 @@ class ViewController:  UIViewController{
         generalStackView.addBackground(color: UIColor(red: CGFloat(238.0/255.0), green: CGFloat(238.0/255.0), blue: CGFloat(238.0/255.0), alpha: CGFloat(1.0)))
     }
     
+    func showFriends() {
+        let users = userBo.getListUser()
+        var friends: [User] = []
+        for friend in users {
+            if (friend.id != user.id){
+                friends.append(friend)
+            }
+        }
+        
+        let singleTap = UITapGestureRecognizer(target: self, action: #selector(ViewController.clickAvatarFriends))
+        firstFriendImage.image = Config.getImage(nameImage: friends[0].avatar)
+        firstFriendImage.setRounded(color: UIColor.white)
+        firstFriendImage.isUserInteractionEnabled = true
+        firstFriendImage.addGestureRecognizer(singleTap)
+        
+        secondFriendImage.image = Config.getImage(nameImage: friends[1].avatar)
+        secondFriendImage.setRounded(color: UIColor.white)
+        secondFriendImage.isUserInteractionEnabled = true
+        secondFriendImage.addGestureRecognizer(singleTap)
+        
+        thirdFriendImage.image = Config.getImage(nameImage: friends[2].avatar)
+        thirdFriendImage.setRounded(color: UIColor.white)
+        thirdFriendImage.isUserInteractionEnabled = true
+        thirdFriendImage.addGestureRecognizer(singleTap)
+    }
+    
     //Action
     @objc func clickAvatar() {
         print("Imageview Clicked")
         performSegue(withIdentifier: "showHandleAvatar", sender: nil)
+    }
+    
+    @objc func clickAvatarFriends() {
+        print("Imageview Clicked")
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

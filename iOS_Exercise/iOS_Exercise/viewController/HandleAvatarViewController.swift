@@ -45,7 +45,7 @@ class HandleAvatarViewController: UIViewController{
         newImageView.backgroundColor = .black
         newImageView.contentMode = .scaleAspectFit
         newImageView.isUserInteractionEnabled = true
-        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissFullscreenImage))
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismisHandle))
         newImageView.addGestureRecognizer(tap)
         self.view.addSubview(newImageView)
         self.navigationController?.isNavigationBarHidden = true
@@ -95,7 +95,7 @@ class HandleAvatarViewController: UIViewController{
         return formatter.string(from: date)
     }
     
-    func dismisHandle() {
+    @objc func dismisHandle() {
         dismiss(animated: true, completion: nil)
     }
     
@@ -146,6 +146,7 @@ extension HandleAvatarViewController : UIImagePickerControllerDelegate, UINaviga
                 self.instanceOfVC.viewDidLoad()
             }
         }
+        self.dismisHandle()
     }
 }
 

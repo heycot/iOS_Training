@@ -64,7 +64,7 @@ class HandleAvatarViewController: UIViewController{
         let removeImageAlert = UIAlertController(title: "Delete", message: "Delete your photo.", preferredStyle: UIAlertController.Style.alert)
         
         removeImageAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
-            print("Handle Ok logic here")
+            self.removeImage(itemName: self.user.avatar)
             if (self.userBo.changeAvatar(rowId: self.user.id, avatar: Config.NO_AVATAR) == true ) {
                 self.dismisHandle()
                 self.instanceOfVC.viewDidLoad()
@@ -72,20 +72,27 @@ class HandleAvatarViewController: UIViewController{
         }))
         
         removeImageAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
-            print("Handle Cancel Logic here")
+            self.dismisHandle()
         }))
         
         present(removeImageAlert, animated: true, completion: nil)
     }
     
-    func saveImageDocumentDirectory(){
+    func removeImage(itemName:String) {
         let fileManager = FileManager.default
-        let paths = (NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as NSString).appendingPathComponent("apple.jpg")
-        let image = UIImage(named: "apple.jpg")
-        print(paths)
-//        let imageData = UIImageJPEGRepresentation(image!, 0.5)
-        let imageData = image!.jpegData(compressionQuality: 0.75)
-        fileManager.createFile(atPath: paths as String, contents: imageData, attributes: nil)
+        let nsDocumentDirectory = FileManager.SearchPathDirectory.documentDirectory
+        let nsUserDomainMask = FileManager.SearchPathDomainMask.userDomainMask
+        let paths = NSSearchPathForDirectoriesInDomains(nsDocumentDirectory, nsUserDomainMask, true)
+        guard let dirPath = paths.first else {
+            return
+        }
+        let filePath = "\(dirPath)/\(itemName)"
+        do {
+            try fileManager.removeItem(atPath: filePath)
+        } catch let error as NSError {
+            print("cannot delete image: " + error.debugDescription)
+        }
+        
     }
     
     func generateNameForImage() -> String {
@@ -121,6 +128,7 @@ extension HandleAvatarViewController : UIImagePickerControllerDelegate, UINaviga
             fatalError("Expected a dictionary containing an image, but was provided the following: \(info)")
         }
         var fileName = ""
+        var fileExtension = ""
         
         if let url = info[UIImagePickerController.InfoKey.referenceURL] as? URL {
             let assets = PHAsset.fetchAssets(withALAssetURLs: [url], options: nil)
@@ -140,6 +148,8 @@ extension HandleAvatarViewController : UIImagePickerControllerDelegate, UINaviga
             print(paths)
             let imageData = selectedImage.jpegData(compressionQuality: 0.75)
             fileManager.createFile(atPath: paths as String, contents: imageData, attributes: nil)
+            
+            removeImage(itemName: user.avatar)
             
             if (self.userBo.changeAvatar(rowId: self.user.id, avatar: fileName) == true ) {
                 self.dismisHandle()
@@ -162,7 +172,6 @@ extension HandleAvatarViewController : UITableViewDelegate {
         } else {
             deleteAvatar()
         }
-        
     }
 }
 

@@ -128,7 +128,6 @@ extension HandleAvatarViewController : UIImagePickerControllerDelegate, UINaviga
             fatalError("Expected a dictionary containing an image, but was provided the following: \(info)")
         }
         var fileName = ""
-        var fileExtension = ""
         
         if let url = info[UIImagePickerController.InfoKey.referenceURL] as? URL {
             let assets = PHAsset.fetchAssets(withALAssetURLs: [url], options: nil)

@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Darwin
 
 class ViewController:  UIViewController{
     
@@ -23,31 +22,44 @@ class ViewController:  UIViewController{
     var userBo = UserBO()
     var user = User()
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        prepareShowDetailAccount()
+        reloadData()
+        
+        if (user.name == "") {
+            user = userBo.getUserDefault()
+        }
+        showDetailAccount(user: user)
+        disabledView()
+        addBackgroundStackView()
+    }
+    
     func prepareShowDetailAccount() {
         name.text = ""
         born.text = ""
         descriptionView.text = ""
     }
     
+    public func reloadData() {
+        user = userBo.findOneById(rowId: user.id)
+    }
     
     func showDetailAccount(user:User) {
-//        let image : UIImage = UIImage(named: user.avatar)!
-//        avatar? = UIImageView(image: image)
-        avatar.image = UIImage(named: user.avatar)
+        self.title = user.name
+        
+        avatar.image = Config.getImage(nameImage: user.avatar)
         avatar.setRounded(color: UIColor.white)
         let singleTap = UITapGestureRecognizer(target: self, action: #selector(ViewController.clickAvatar))
         avatar.isUserInteractionEnabled = true
         avatar.addGestureRecognizer(singleTap)
         
         name?.text = user.name
-//        born?.text = user.born + " | Male"
         descriptionView?.text = user.description
         
         if (user.gender == 0) {
-            
             born?.text = user.born + " | Male"
         } else {
-            
             born?.text = user.born + " | Female"
         }
         
@@ -55,6 +67,20 @@ class ViewController:  UIViewController{
         follower.text = "200K"
         update.text = "15K"
         
+    }
+    
+    func disabledView() {
+        name.isEnabled = false
+        born.isEnabled = false
+        descriptionView.isEditable = false
+        
+        follower.isEnabled = false
+        following.isEnabled = false
+        update.isEnabled = false
+    }
+    
+    func addBackgroundStackView() {
+        generalStackView.addBackground(color: UIColor(red: CGFloat(238.0/255.0), green: CGFloat(238.0/255.0), blue: CGFloat(238.0/255.0), alpha: CGFloat(1.0)))
     }
     
     //Action
@@ -68,17 +94,8 @@ class ViewController:  UIViewController{
         {
             let vc = segue.destination as? HandleAvatarViewController
             vc?.user = user
+            vc?.instanceOfVC = self
         }
-    }
-    
-    func disabledView() {
-        name.isEnabled = false
-        born.isEnabled = false
-        descriptionView.isEditable = false
-        
-        follower.isEnabled = false
-        following.isEnabled = false
-        update.isEnabled = false
     }
     
     @IBAction func backBtnClick(_ sender: Any) {
@@ -87,33 +104,7 @@ class ViewController:  UIViewController{
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "ViewListUserControllerID")
         self.navigationController?.pushViewController(vc!, animated: false)
     }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        prepareShowDetailAccount()
-        
-        if (user.name != "") {
-            showDetailAccount(user: user)
-        } else {
-            user = userBo.getUserDefault()
-            showDetailAccount(user: user)
-        }
-        
-        self.title = user.name
-        disabledView()
-        
-        generalStackView.addBackground(color: UIColor(red: CGFloat(238.0/255.0), green: CGFloat(238.0/255.0), blue: CGFloat(238.0/255.0), alpha: CGFloat(1.0)))
-    }
 }
 
-extension UIStackView {
-    
-    func addBackground(color: UIColor) {
-        let subview = UIView(frame: bounds)
-        subview.backgroundColor = color
-        subview.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        insertSubview(subview, at: 0)
-    }
-    
-}
+
 

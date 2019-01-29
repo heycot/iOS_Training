@@ -99,13 +99,12 @@ class TableUser{
         return false
     }
     
-    func deleteAvatar(rowId: Int64) -> Bool {
+    func changeAvatar(rowId: Int64, avatarName: String) -> Bool {
         do {
             let edit = tableUser.filter(id == rowId)
 //            try Database.db.connection?.run(edit.update(avatar <- avatar.replace("", with: "no_avatar")))
             
-            
-            try Database.db.connection?.run(edit.update(avatar <- "no_avatar"))
+            try Database.db.connection?.run(edit.update(avatar <- avatarName))
             
             return true
         } catch {
@@ -115,5 +114,18 @@ class TableUser{
         return false
     }
     
+    func findOneById(rowId: Int64) -> User {
+        var user = User()
+        do {
+            let query = tableUser.filter(id == rowId)
+            for row in try (Database.db.connection?.prepare(query))! {
+               user = User(id: row[id],  name: row[name], born: row[born], gender: row[gender], avatar: row[avatar], description: row[description])
+            }
+        } catch {
+            print("find one failed (exception)")
+        }
+        
+        return user
+    }
 }
 

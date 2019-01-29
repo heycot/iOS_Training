@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Darwin
 
 class ViewListUserController : UIViewController {
     
@@ -23,20 +22,22 @@ class ViewListUserController : UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.tableFooterView = UIView()
         
         navigationItem.hidesBackButton = true
         
         prepareData()
-        print("list user :", listUser.count)
+        setUpForTableView()
+    }
+    
+    func setUpForTableView() {
+        tableView.tableFooterView = UIView()
         tableView.dataSource = self
         tableView.delegate = self
         
         self.tableView.reloadData()
         tableView.estimatedRowHeight = UITableView.automaticDimension
-//        tableView.rowHeight = UITableView.automaticDimension
+        //tableView.rowHeight = UITableView.automaticDimension
         tableView.rowHeight = 70
-        
     }
     
     @objc override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -53,6 +54,7 @@ class ViewListUserController : UIViewController {
             vc?.user = sender as! User
         }
     }
+    
 }
 
 extension ViewListUserController : UITableViewDataSource {
@@ -68,7 +70,7 @@ extension ViewListUserController : UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CellItem") as! CustomTableViewCell
 
-        cell.avatar.image = UIImage(named: listUser[indexPath.row].avatar)
+        cell.avatar.image = Config.getImage(nameImage: listUser[indexPath.row].avatar)
         cell.avatar.setRounded(color: UIColor(red: CGFloat(81.0/255.0), green: CGFloat(110.0/255.0), blue: CGFloat(173.0/255.0), alpha: CGFloat(1.0)))
         cell.name.text = listUser[indexPath.row].name
         cell.born.text = listUser[indexPath.row].born
@@ -111,20 +113,10 @@ extension ViewListUserController : UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         performSegue(withIdentifier: "ShowUserSelected", sender: listUser[indexPath.row])
     }
-    
 }
 
 
-extension UIImageView {
-    
-    func setRounded(color: UIColor) {
-        self.layer.cornerRadius = (self.frame.size.width / 2) //instead of let radius = CGRectGetWidth(self.frame) / 2
-        self.layer.masksToBounds = true
-        self.clipsToBounds = true
-        self.layer.borderWidth = 3.0
-        self.layer.borderColor = color.cgColor
-    }
-}
+
 
 
 

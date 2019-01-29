@@ -19,6 +19,8 @@
 		2356DD4D21E45684005D4624 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2356DD4C21E45684005D4624 /* Database.swift */; };
 		2363C1BF21DDB9FA0044ED91 /* LearningDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2363C1BE21DDB9FA0044ED91 /* LearningDelegate.swift */; };
 		237971D921FED97F00AAC51D /* HandleAvatarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237971D821FED97F00AAC51D /* HandleAvatarViewController.swift */; };
+		23824CAE2200090100302CC1 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23824CAD2200090100302CC1 /* Config.swift */; };
+		23824CB022000AFA00302CC1 /* ExtensionUIKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23824CAF22000AFA00302CC1 /* ExtensionUIKit.swift */; };
 		239EF33621D5FD810054E4B5 /* AddNewAccountController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239EF33521D5FD810054E4B5 /* AddNewAccountController.swift */; };
 		23EF7B7121DF16AB00A5C7D3 /* ViewListUserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EF7B7021DF16AB00A5C7D3 /* ViewListUserController.swift */; };
 		4CF2389500F7F403CBFB3AAB /* Pods_iOS_Exercise.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F42C69EEBA3F6FC1C254D4DA /* Pods_iOS_Exercise.framework */; };
@@ -39,6 +41,8 @@
 		2356DD4C21E45684005D4624 /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		2363C1BE21DDB9FA0044ED91 /* LearningDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearningDelegate.swift; sourceTree = "<group>"; };
 		237971D821FED97F00AAC51D /* HandleAvatarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandleAvatarViewController.swift; sourceTree = "<group>"; };
+		23824CAD2200090100302CC1 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		23824CAF22000AFA00302CC1 /* ExtensionUIKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionUIKit.swift; sourceTree = "<group>"; };
 		239EF33521D5FD810054E4B5 /* AddNewAccountController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewAccountController.swift; sourceTree = "<group>"; };
 		23EF7B7021DF16AB00A5C7D3 /* ViewListUserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ViewListUserController.swift; sourceTree = "<group>"; usesTabs = 0; };
 		490C3462CE08904AB552C5B0 /* Pods-iOS_Exercise.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS_Exercise.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iOS_Exercise/Pods-iOS_Exercise.debug.xcconfig"; sourceTree = "<group>"; };
@@ -150,6 +154,8 @@
 			children = (
 				2356DD4C21E45684005D4624 /* Database.swift */,
 				2304D41921E745AD00611C71 /* TableUser.swift */,
+				23824CAD2200090100302CC1 /* Config.swift */,
+				23824CAF22000AFA00302CC1 /* ExtensionUIKit.swift */,
 			);
 			name = library;
 			path = "New Group";
@@ -292,11 +298,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				23824CB022000AFA00302CC1 /* ExtensionUIKit.swift in Sources */,
 				2308FB8D21D1DDE300848061 /* ViewController.swift in Sources */,
 				23EF7B7121DF16AB00A5C7D3 /* ViewListUserController.swift in Sources */,
 				2308FB8B21D1DDE300848061 /* AppDelegate.swift in Sources */,
 				237971D921FED97F00AAC51D /* HandleAvatarViewController.swift in Sources */,
 				2363C1BF21DDB9FA0044ED91 /* LearningDelegate.swift in Sources */,
+				23824CAE2200090100302CC1 /* Config.swift in Sources */,
 				2356DD4D21E45684005D4624 /* Database.swift in Sources */,
 				2308FBA421D2199700848061 /* User.swift in Sources */,
 				2345F66921EEEC540043A27E /* CustomTableViewCell.swift in Sources */,

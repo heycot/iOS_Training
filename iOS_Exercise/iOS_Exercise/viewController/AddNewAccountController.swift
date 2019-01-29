@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Darwin
 
 class AddNewAccountController: UIViewController{
     
@@ -15,7 +14,6 @@ class AddNewAccountController: UIViewController{
     @IBOutlet weak var born: UITextField!
     @IBOutlet weak var gender: UITextField!
     @IBOutlet weak var descriptionView: UITextView!
-    
     @IBOutlet weak var doneBtn: UIBarButtonItem!
     
     let datePicker = UIDatePicker()
@@ -25,6 +23,23 @@ class AddNewAccountController: UIViewController{
     var newUser = User()
     let noAvatar = "no_avatar"
     var genderData: [String] = [String]()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        showDateAndGender()
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard (_:)))
+        self.view.addGestureRecognizer(tapGesture)
+    }
+    
+    func showDateAndGender() {
+        showDatePicker()
+        showGenderPicker()
+        descriptionView.delegate = self
+        born.delegate = self
+        gender.delegate = self
+        textViewDidBeginEditing(descriptionView)
+    }
     
     @IBAction func backBtnClick(_ sender: UIBarButtonItem) {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "ViewListUserControllerID")
@@ -60,13 +75,6 @@ class AddNewAccountController: UIViewController{
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-//        let navVC = segue.destination as? UINavigationController
-//        if navVC?.viewControllers.first is ViewController {
-//            let vc = navVC?.viewControllers.first as? ViewController
-//            vc?.user = newUser
-//        }
-        
         if segue.destination is ViewController
         {
             let vc = segue.destination as? ViewController
@@ -74,28 +82,16 @@ class AddNewAccountController: UIViewController{
         }
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        showDateAndGender()
-        
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard (_:)))
-        self.view.addGestureRecognizer(tapGesture)
-    }
-    
-    func showDateAndGender() {
-        showDatePicker()
-        showGenderPicker()
-        descriptionView.delegate = self
-        born.delegate = self
-        gender.delegate = self
-        textViewDidBeginEditing(descriptionView)
-    }
-    
     @objc func dismissKeyboard (_ sender: UITapGestureRecognizer) {
         name.resignFirstResponder()
         descriptionView.resignFirstResponder()
     }
     
+    
+}
+
+//work with UIDatePicker and UIPickerView
+extension AddNewAccountController {
     func showDatePicker() {
         //Formate Date
         datePicker.datePickerMode = .date

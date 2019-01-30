@@ -41,3 +41,11 @@ extension UIStackView {
     }
     
 }
+
+class MyTapGesture : UITapGestureRecognizer {
+    var userSender = User()
+}
+
+class MyLongTapGesture : UILongPressGestureRecognizer {
+    var title = String()
+}

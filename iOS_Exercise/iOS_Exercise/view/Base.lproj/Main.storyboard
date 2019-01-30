@@ -29,7 +29,7 @@
                                         </constraints>
                                     </imageView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="21" translatesAutoresizingMaskIntoConstraints="NO" id="bt6-aI-RCs" userLabel="StackDescriptionView">
-                                        <rect key="frame" x="20" y="290" width="335" height="148"/>
+                                        <rect key="frame" x="20" y="290" width="335" height="143"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="About:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Da3-OW-j6z">
                                                 <rect key="frame" x="0.0" y="0.0" width="56.5" height="40"/>
@@ -41,7 +41,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7IV-sW-QEm" userLabel="Description Text View">
-                                                <rect key="frame" x="0.0" y="61" width="335" height="87"/>
+                                                <rect key="frame" x="0.0" y="61" width="335" height="82"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <color key="tintColor" red="0.23696334869999999" green="0.66666668650000005" blue="0.22900883960000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -153,33 +153,42 @@
                                             <constraint firstItem="yPc-6q-DuZ" firstAttribute="height" secondItem="bpF-XW-vj8" secondAttribute="height" constant="-10" id="hjX-oB-R2Q"/>
                                         </constraints>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Iot-r3-i47" userLabel="Friends Stack View">
-                                        <rect key="frame" x="32.5" y="448" width="310" height="135"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Iot-r3-i47" userLabel="Friends Stack View">
+                                        <rect key="frame" x="32.5" y="443" width="310" height="140"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Friends " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NNB-Ua-iUV">
-                                                <rect key="frame" x="0.0" y="0.0" width="310" height="25"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="310" height="20"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="25" id="PXT-iN-mDF"/>
+                                                    <constraint firstAttribute="height" constant="20" id="PXT-iN-mDF"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" red="0.0" green="0.39215686274509803" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6FJ-yl-rxC" userLabel="Friend's name">
+                                                <rect key="frame" x="0.0" y="30" width="310" height="13"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="13" id="2dg-g5-zxM"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="fV4-yn-OuT" userLabel="Friends Image Stack View">
-                                                <rect key="frame" x="0.0" y="45" width="310" height="90"/>
+                                                <rect key="frame" x="0.0" y="53" width="310" height="87"/>
                                                 <subviews>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="L7E-lJ-liE">
-                                                        <rect key="frame" x="0.0" y="0.0" width="90" height="90"/>
-                                                        <color key="backgroundColor" red="0.96470588235294119" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="L7E-lJ-liE">
+                                                        <rect key="frame" x="0.0" y="0.0" width="90" height="87"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="L7E-lJ-liE" secondAttribute="height" multiplier="1:1" priority="999" id="N15-7f-oo0"/>
                                                         </constraints>
                                                     </imageView>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jid-ET-XJb">
-                                                        <rect key="frame" x="110" y="0.0" width="90" height="90"/>
+                                                    <imageView multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jid-ET-XJb">
+                                                        <rect key="frame" x="110" y="0.0" width="90" height="87"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </imageView>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0Pp-Dp-yYf">
-                                                        <rect key="frame" x="220" y="0.0" width="90" height="90"/>
+                                                        <rect key="frame" x="220" y="0.0" width="90" height="87"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </imageView>
                                                 </subviews>
@@ -188,7 +197,7 @@
                                         <constraints>
                                             <constraint firstItem="fV4-yn-OuT" firstAttribute="width" secondItem="Iot-r3-i47" secondAttribute="width" id="1Qg-Y7-DST"/>
                                             <constraint firstAttribute="width" constant="310" id="HGf-cL-6OJ"/>
-                                            <constraint firstAttribute="height" constant="135" id="clf-Jw-BGn"/>
+                                            <constraint firstAttribute="height" constant="140" id="clf-Jw-BGn"/>
                                             <constraint firstItem="fV4-yn-OuT" firstAttribute="centerX" secondItem="Iot-r3-i47" secondAttribute="centerX" id="hHe-Ln-13R"/>
                                         </constraints>
                                     </stackView>
@@ -242,16 +251,17 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="ThirdFriendImage" destination="0Pp-Dp-yYf" id="njd-oe-DmP"/>
                         <outlet property="avatar" destination="uNL-Oe-537" id="dgM-sc-csw"/>
                         <outlet property="born" destination="k00-KH-adr" id="xgT-6Y-m0g"/>
                         <outlet property="descriptionView" destination="7IV-sW-QEm" id="arB-0Q-cav"/>
-                        <outlet property="firstFriendImage" destination="L7E-lJ-liE" id="o3h-Nd-BlU"/>
+                        <outlet property="firstFriendImage" destination="L7E-lJ-liE" id="eTW-cO-r69"/>
                         <outlet property="follower" destination="6Eb-lq-H1H" id="757-9f-Biq"/>
                         <outlet property="following" destination="qOu-gj-0E3" id="ANZ-zP-CmC"/>
+                        <outlet property="friendsLable" destination="6FJ-yl-rxC" id="oEG-M5-axl"/>
                         <outlet property="generalStackView" destination="bpF-XW-vj8" id="vzL-vu-FGN"/>
                         <outlet property="name" destination="uo8-Xd-oRZ" id="wQS-w2-yAx"/>
-                        <outlet property="secondFriendImage" destination="jid-ET-XJb" id="KKQ-sq-SCi"/>
+                        <outlet property="secondFriendImage" destination="jid-ET-XJb" id="hCy-Ur-1XT"/>
+                        <outlet property="thirdFriendImage" destination="0Pp-Dp-yYf" id="hvN-ou-fZu"/>
                         <outlet property="update" destination="Wm2-Qy-lQR" id="vrk-Sk-oDZ"/>
                         <segue destination="Mj4-9B-8ha" kind="presentation" identifier="showHandleAvatar" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="g14-Wo-bfn"/>
                     </connections>
@@ -656,6 +666,6 @@
         <image name="avatar_background" width="2160" height="1350"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="SVD-zL-OVD"/>
+        <segue reference="Hso-sS-ezR"/>
     </inferredMetricsTieBreakers>
 </document>

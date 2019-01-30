@@ -22,6 +22,7 @@ class ViewController:  UIViewController{
     @IBOutlet weak var firstFriendImage: UIImageView!
     @IBOutlet weak var secondFriendImage: UIImageView!
     @IBOutlet weak var thirdFriendImage: UIImageView!
+    @IBOutlet weak var friendsLable: UILabel!
     
     var userBo = UserBO()
     var user = User()
@@ -96,32 +97,46 @@ class ViewController:  UIViewController{
                 friends.append(friend)
             }
         }
+        setTapForFriendsImage(userSender: friends[0], itemImage: firstFriendImage)
+        setTapForFriendsImage(userSender: friends[1], itemImage: secondFriendImage)
+        setTapForFriendsImage(userSender: friends[2], itemImage: thirdFriendImage)
         
-        let singleTap = UITapGestureRecognizer(target: self, action: #selector(ViewController.clickAvatarFriends))
-        firstFriendImage.image = Config.getImage(nameImage: friends[0].avatar)
-        firstFriendImage.setRounded(color: UIColor.white)
-        firstFriendImage.isUserInteractionEnabled = true
-        firstFriendImage.addGestureRecognizer(singleTap)
+        setLongTapFriendsImage(userSender: friends[0], itemImage: firstFriendImage)
+        setLongTapFriendsImage(userSender: friends[1], itemImage: secondFriendImage)
+        setLongTapFriendsImage(userSender: friends[2], itemImage: thirdFriendImage)
+    }
+    
+    func setLongTapFriendsImage(userSender: User, itemImage: UIImageView) {
+        let firstLongTap = MyLongTapGesture(target: self, action: #selector(self.longTapAvatarFriends))
+        firstLongTap.minimumPressDuration = 1
+        itemImage.setRounded(color: UIColor.white)
+        itemImage.isUserInteractionEnabled = true
+        itemImage.addGestureRecognizer(firstLongTap)
+        firstLongTap.title = userSender.name
+    }
+    
+    func setTapForFriendsImage(userSender: User, itemImage: UIImageView) {
+        let singleTap = MyTapGesture(target: self, action: #selector(self.clickAvatarFriends))
         
-        secondFriendImage.image = Config.getImage(nameImage: friends[1].avatar)
-        secondFriendImage.setRounded(color: UIColor.white)
-        secondFriendImage.isUserInteractionEnabled = true
-        secondFriendImage.addGestureRecognizer(singleTap)
-        
-        thirdFriendImage.image = Config.getImage(nameImage: friends[2].avatar)
-        thirdFriendImage.setRounded(color: UIColor.white)
-        thirdFriendImage.isUserInteractionEnabled = true
-        thirdFriendImage.addGestureRecognizer(singleTap)
+        itemImage.image = Config.getImage(nameImage: userSender.avatar)
+        itemImage.setRounded(color: UIColor.white)
+        itemImage.isUserInteractionEnabled = true
+        itemImage.addGestureRecognizer(singleTap)
+        singleTap.userSender = userSender
     }
     
     //Action
     @objc func clickAvatar() {
-        print("Imageview Clicked")
         performSegue(withIdentifier: "showHandleAvatar", sender: nil)
     }
     
-    @objc func clickAvatarFriends() {
-        print("Imageview Clicked")
+    @objc func clickAvatarFriends(sender : MyTapGesture) {
+        self.user = sender.userSender
+        self.showDetailAccount(user: sender.userSender)
+    }
+    
+    @objc func longTapAvatarFriends(sender : MyLongTapGesture) {
+         friendsLable.text = sender.title
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
